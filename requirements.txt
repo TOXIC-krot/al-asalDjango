@@ -7,4 +7,5 @@ psycopg2-binary==2.9.9
 gunicorn
 pillow==10.4.0
 
-aiogram==2.25.1
+aiogram==3.10.0
+asyncio==3.4.3

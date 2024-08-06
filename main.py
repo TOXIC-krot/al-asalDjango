@@ -1,4 +1,8 @@
-from aiogram import Bot, Dispatcher, types, executor
+import asyncio
+
+from aiogram import Bot, Dispatcher, types
+from aiogram.filters import Command
+from aiogram.enums import ContentType
 from aiogram.types import (
     ReplyKeyboardMarkup,
     KeyboardButton,
@@ -6,32 +10,36 @@ from aiogram.types import (
     InlineKeyboardButton,
 )
 
+# Define your bot token and create Bot and Dispatcher instances
 bot_token = "7103058255:AAEgd6zSw9PAvwneoCJ3OD0K2jEO4FUSnAo"
-bot = Bot(bot_token)
-dp = Dispatcher(bot)
+bot = Bot(token=bot_token)
+dp = Dispatcher()
 
 # Keyboards
-contact = ReplyKeyboardMarkup(resize_keyboard=True).add(
-    KeyboardButton("Kontaktni yuborish", request_contact=True)
+contact_kb = ReplyKeyboardMarkup(
+    resize_keyboard=True,
+    keyboard=[[KeyboardButton(text="Kontaktni yuborish", request_contact=True)]],
 )
-
 # Web App Button
-web_app_button = InlineKeyboardMarkup().add(
-    InlineKeyboardButton(
-        "Bizning sahifamizga utish",
-        web_app=types.WebAppInfo(url="https://www.al-asal.uz/"),
-    )
+web_app_button = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(
+                text="Bizning sahifamizga utish",
+                web_app=types.WebAppInfo(url="https://www.al-asal.uz/"),
+            )
+        ]
+    ]
+)
+location_kb = ReplyKeyboardMarkup(
+    resize_keyboard=True,
+    keyboard=[[KeyboardButton(text="📍 Lokatsiyani yuborish", request_location=True)]],
 )
 
-location_kb = ReplyKeyboardMarkup(resize_keyboard=True).add(
-    KeyboardButton("📍 Lokatsiyani yuborish", request_location=True)
-)
 
-
-@dp.message_handler(commands=["start"])
+@dp.message_handler(Command("start"))
 async def start(message: types.Message):
-
-    await bot.send_message(chat_id=message.chat.id, text="hereee")
+    await message.answer("hereee")
 
     photo_url = "https://heartfelt-cascaron-a8b855.netlify.app/assets/logo.jpg"
     caption_text = (
@@ -39,15 +47,12 @@ async def start(message: types.Message):
         "tizimni ishga tushirish uchun kelin tanishib olaylik, uning uchun, "
         "o`z kontaktingizni junating."
     )
-    await bot.send_photo(
-        chat_id=message.chat.id,
-        photo=photo_url,
-        caption=caption_text,
-        reply_markup=contact,
+    await message.answer_photo(
+        photo=photo_url, caption=caption_text, reply_markup=contact_kb
     )
 
 
-@dp.message_handler(content_types=types.ContentType.CONTACT)
+@dp.message_handler(ContentType.CONTACT)
 async def cmd_contact(message: types.Message):
     await message.answer(
         "Bizning sahifamizga utish uchun quyidagi tugmani bosing:",
@@ -56,7 +61,7 @@ async def cmd_contact(message: types.Message):
     await message.answer("Iltimos, lokatsiyangizni yuboring:", reply_markup=location_kb)
 
 
-@dp.message_handler(content_types=types.ContentType.LOCATION)
+@dp.message_handler(ContentType.LOCATION)
 async def handle_location(message: types.Message):
     await message.answer(
         "Sizning manzilingiz qabul qilindi. Operatorlarimiz 24 soat ichida siz bilan bog'lanadi.",
@@ -64,5 +69,10 @@ async def handle_location(message: types.Message):
     )
 
 
+async def main() -> None:
+
+    await dp.start_polling(bot)
+
+
 if __name__ == "__main__":
-    executor.start_polling(dp, skip_updates=True)
+    asyncio.run(main())
