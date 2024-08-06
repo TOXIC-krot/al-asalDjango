@@ -13,7 +13,7 @@ services:
       - POSTGRES_PORT=${DB_PORT}
     restart: always
 
-  web: &django
+  web:
     build:
       context: ./
       dockerfile: Dockerfile
@@ -35,14 +35,6 @@ services:
     depends_on:
       - db
     restart: always
-
-  bot:
-    <<: *django
-    container_name: al_asal_bot
-    entrypoint: []
-    command: pip install -r requirements.txt && python main.py
-    ports:
-      - 8005:8005
 
 volumes:
   postgres_data:
