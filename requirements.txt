@@ -6,3 +6,5 @@ psycopg2-binary==2.9.9
 
 gunicorn
 pillow==10.4.0
+
+aiogram==2.25.1
