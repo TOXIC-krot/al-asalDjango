@@ -11,7 +11,7 @@ from aiogram.types import (
 )
 
 # Define your bot token and create Bot and Dispatcher instances
-bot_token = "7103058255:AAEgd6zSw9PAvwneoCJ3OD0K2jEO4FUSnAo"
+bot_token = "7293607513:AAEMbszahoLrfxC5_28fEojq0AGCkKe3EsE"
 bot = Bot(token=bot_token)
 dp = Dispatcher()
 
