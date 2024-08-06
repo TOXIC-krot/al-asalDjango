@@ -36,14 +36,14 @@ services:
       - db
     restart: always
 
-  bot:
-    build:
-      context: ./
-      dockerfile: compose/bot/Dockerfile
-    container_name: al_asal_bot
-    ports:
-      - 8007:8007
-    restart: always
+  # bot:
+  #   build:
+  #     context: ./
+  #     dockerfile: compose/bot/Dockerfile
+  #   container_name: al_asal_bot
+  #   ports:
+  #     - 8007:8007
+  #   restart: always
 
 volumes:
   postgres_data:
