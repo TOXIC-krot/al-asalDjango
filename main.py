@@ -37,7 +37,7 @@ location_kb = ReplyKeyboardMarkup(
 )
 
 
-@dp.message_handler(Command("start"))
+@dp.message(Command("start"))
 async def start(message: types.Message):
     await message.answer("hereee")
 
@@ -52,7 +52,7 @@ async def start(message: types.Message):
     )
 
 
-@dp.message_handler(ContentType.CONTACT)
+@dp.message(ContentType.CONTACT)
 async def cmd_contact(message: types.Message):
     await message.answer(
         "Bizning sahifamizga utish uchun quyidagi tugmani bosing:",
@@ -61,7 +61,7 @@ async def cmd_contact(message: types.Message):
     await message.answer("Iltimos, lokatsiyangizni yuboring:", reply_markup=location_kb)
 
 
-@dp.message_handler(ContentType.LOCATION)
+@dp.message(ContentType.LOCATION)
 async def handle_location(message: types.Message):
     await message.answer(
         "Sizning manzilingiz qabul qilindi. Operatorlarimiz 24 soat ichida siz bilan bog'lanadi.",
