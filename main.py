@@ -19,7 +19,7 @@ contact = ReplyKeyboardMarkup(resize_keyboard=True).add(
 web_app_button = InlineKeyboardMarkup().add(
     InlineKeyboardButton(
         "Bizning sahifamizga utish",
-        web_app=types.WebAppInfo(url="https://419b-195-158-20-242.ngrok-free.app"),
+        web_app=types.WebAppInfo(url="https://www.al-asal.uz/"),
     )
 )
 
