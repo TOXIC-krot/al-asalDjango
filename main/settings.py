@@ -158,3 +158,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 CART_SESSION_ID = "cart"
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "al-asal.abkk.org",
+]
+CSRF_COOKIE_SECURE = True
