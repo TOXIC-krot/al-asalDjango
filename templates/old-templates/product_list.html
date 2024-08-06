@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+    <div class="wrapper-menu">
+        <section class="section-menu">
+            <div class="container p-0">
+                <nav class="navbar">
+                    <!-- Nav pills -->
+                    <ul class="item-ul d-flex">
+                        <li>
+                            <h1 class="text-about">Asal turlari:</h1>
+                        </li>
+                        <li>
+                            <ul class="nav nav-pills">
+                                <li class="nav-item">
+                                    <a class="nav-link {% if not category %} active {% endif %}" href="{%  url 'product_list' %}">Hamma asal turlari</a> {% comment %} data-bs-toggle="pill" ----- href="#all" {% endcomment %}
+                                </li>
+                                {% for ctgy in categories %}
+                                    <li class="nav-item">
+                                        <a class="nav-link {% if category.slug == ctgy.slug %} active {% endif %}" href="{{ ctgy.get_absolute_url }}">{{ ctgy.name }}</a> {% comment %} data-bs-toggle="pill" ----- % url 'product_category' category.slug % {% endcomment %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane container active" id="all">
+                        <div class="carts-box">
+                            {% for product in products %}
+                            <div class="cart">
+                                <div>
+                                    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "assets/images/no_image.png" %}{% endif %}" alt="cart-img" class="cart-img">
+                                </div>
+                                <a class="product_name" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                                <p>Og'irligi: {{ product.weight }}&nbsp;kg</p>
+                                <div class="results-box d-flex justify-content-between">
+                                    <form action="{% url 'cart_add' product.id %}" id="cart-form-{{ product.id }}" class="form" method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="quantity" id="quantity-{{ product.id }}" value="{{ product.selected_quantity }}">
+                                        <input type="hidden" name="update" id="update-{{ product.id }}" value="false">
+
+                                        <button type="button" class="minus" data-product-id="{{ product.id }}">-</button>
+                                        <h3 class="result" id="result-{{ product.id }}">{{ product.selected_quantity }}</h3>
+                                        <button type="button" class="plus" data-product-id="{{ product.id }}" data-stock="{{ product.stock }}">+</button>
+                                    </form>
+                                    <div>
+                                        <h1 class="price">{{ product.price }} so'm</h1>
+                                    </div>
+                                </div>
+                                <p class="available">Hozirda mavjud: {{ product.stock }} ta</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="basket-smallBox">
+                <a href="{% url 'cart_detail' %}">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 256 256" xml:space="preserve">
+                        <defs>
+                        </defs>
+                        <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
+                            <path d="M 72.975 58.994 H 31.855 c -1.539 0 -2.897 -1.005 -3.347 -2.477 L 15.199 13.006 H 3.5 c -1.933 0 -3.5 -1.567 -3.5 -3.5 s 1.567 -3.5 3.5 -3.5 h 14.289 c 1.539 0 2.897 1.005 3.347 2.476 l 13.309 43.512 h 36.204 l 10.585 -25.191 H 45 c -1.933 0 -3.5 -1.567 -3.5 -3.5 s 1.567 -3.5 3.5 -3.5 h 41.5 c 1.172 0 2.267 0.587 2.915 1.563 s 0.766 2.212 0.312 3.293 L 76.201 56.85 C 75.655 58.149 74.384 58.994 72.975 58.994 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                            <circle cx="28.88" cy="74.33" r="6.16" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+                            <circle cx="74.59" cy="74.33" r="6.16" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+                        </g>
+                        </svg>
+                </a>
+
+            </div>
+        </section>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- CSRF Token Configuration -->
+    <script>
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        $(document).ready(function() {
+            var csrftoken = getCookie('csrftoken');
+
+            $('.plus, .minus').click(function() {
+                var $button = $(this);
+                var productId = $button.data('product-id');
+                var $form = $('#cart-form-' + productId);
+                var $quantityInput = $('#quantity-' + productId);
+                var $resultDisplay = $('#result-' + productId);
+                var currentQuantity = parseInt($quantityInput.val(), 10);
+                var stock = $button.data('stock');
+
+                if ($button.hasClass('plus')) {
+                    if (currentQuantity < stock) {
+                        currentQuantity++;
+                    } else {
+                        alert('So‘ralgan miqdor mavjud zaxiralardan oshib ketdi.');
+                        return;
+                    }
+                } else if (currentQuantity > 0) {
+                    currentQuantity--;
+                }
+
+                $quantityInput.val(currentQuantity);
+                $resultDisplay.text(currentQuantity);
+
+                $.ajax({
+                    url: $form.attr('action'),
+                    type: 'POST',
+                    headers: {
+                        'X-CSRFToken': csrftoken
+                    },
+                    data: $form.serialize(),
+                    success: function(response) {
+                        if (response.success) {
+                            console.log('Quantity updated:', response.quantity);
+                            // Optionally update other parts of the page or show a success message
+                        } else {
+                            console.log('Failed to update quantity');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', status, error);
+                    }
+                });
+            });
+        });
+    </script>
+
+{% endblock %}
