@@ -18,7 +18,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     container_name: al_asal_web
-    command: gunicorn core.wsgi:application --bind 0.0.0.0:${DJANGO_PORT} --workers=4
+    command: gunicorn main.wsgi:application --bind 0.0.0.0:${DJANGO_PORT} --workers=4
     volumes:
       - ./:/app
       - ./static:/home/app/web/static

@@ -1,2 +1,8 @@
 Django==5.0.7
 python-environ==0.4.54
+
+# Database
+psycopg2-binary==2.9.9
+
+gunicorn
+pillow==10.4.0
