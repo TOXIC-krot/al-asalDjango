@@ -161,6 +161,6 @@ CART_SESSION_ID = "cart"
 
 
 CSRF_TRUSTED_ORIGINS = [
-    "al-asal.abkk.org",
+    "https://al-asal.abkk.org",
 ]
 CSRF_COOKIE_SECURE = True
