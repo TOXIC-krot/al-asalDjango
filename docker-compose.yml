@@ -41,6 +41,8 @@ services:
     container_name: al_asal_bot
     entrypoint: []
     command: python main.py
+    ports:
+      - 8005:8005
 
 volumes:
   postgres_data:
