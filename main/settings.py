@@ -34,8 +34,9 @@ DEBUG = env.bool("DEBUG")
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "192.168.1.4",
-    "10.20.34.8",
+    # "192.168.1.4",
+    # "10.20.34.8",
+    "al-asal.abkk.org",
 ]
 
 
