@@ -42,7 +42,7 @@ services:
       dockerfile: compose/bot/Dockerfile
     container_name: al_asal_bot
     ports:
-      - 8001:8001
+      - 8007:8007
     restart: always
 
 volumes:
