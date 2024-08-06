@@ -2,12 +2,12 @@ import asyncio
 
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
-from aiogram.enums import ContentType
 from aiogram.types import (
     ReplyKeyboardMarkup,
     KeyboardButton,
     InlineKeyboardMarkup,
     InlineKeyboardButton,
+    ContentTypes,
 )
 
 # Define your bot token and create Bot and Dispatcher instances
@@ -52,7 +52,7 @@ async def start(message: types.Message):
     )
 
 
-@dp.message(ContentType.CONTACT)
+@dp.message(ContentTypes.CONTACT)
 async def cmd_contact(message: types.Message):
     await message.answer(
         "Bizning sahifamizga utish uchun quyidagi tugmani bosing:",
@@ -61,7 +61,7 @@ async def cmd_contact(message: types.Message):
     await message.answer("Iltimos, lokatsiyangizni yuboring:", reply_markup=location_kb)
 
 
-@dp.message(ContentType.LOCATION)
+@dp.message(ContentTypes.LOCATION)
 async def handle_location(message: types.Message):
     await message.answer(
         "Sizning manzilingiz qabul qilindi. Operatorlarimiz 24 soat ichida siz bilan bog'lanadi.",
