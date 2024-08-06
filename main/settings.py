@@ -36,7 +36,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     # "192.168.1.4",
     # "10.20.34.8",
-    "al-asal.uz",
+    "www.al-asal.uz",
 ]
 
 
@@ -161,6 +161,6 @@ CART_SESSION_ID = "cart"
 
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://www.al-asal.uz",
+    "https://www.al-asal.uz/",
 ]
 CSRF_COOKIE_SECURE = True
