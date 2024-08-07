@@ -101,18 +101,12 @@ form.product-add > .quantity-increment::after {
 }
 
 @media (max-width:1060px) {
-    .product-info > .product-name {
-        font-size: 23px;
-    }
-    .product-price {
-        font-size: 23px;
-    }
+    .product-info > .product-name { font-size: 23px; }
+    .product-price { font-size: 23px; }
+    .product-col { width: 33.333333%; }
 }
 
 @media (max-width:995px) {
-    .product-card {
-        padding: 12px;
-    }
     .product-stock {
         left: 12px;
         bottom: 12px;
@@ -128,12 +122,7 @@ form.product-add > .quantity-increment::after {
         height: 35px;
         font-size: 17px;
     }
-    .cart-img {
-        border-radius: 3px;
-    }
-    .product-info > p {
-        margin-bottom: 10px;
-    }
+    .product-info > p { margin-bottom: 10px; }
 }
 
 @media (max-width:905px) {
@@ -149,7 +138,7 @@ form.product-add > .quantity-increment::after {
     .product-price {
         font-size: 17px;
     }
-    .product-card {
+    .product-col {
         width: 50%;
     }
 }
