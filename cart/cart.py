@@ -9,27 +9,28 @@ class Cart(object):
         Инициализируем корзину
         """
         self.session = request.session
-        cart = self.session.get(settings.CART_SESSION_ID)
+        cart = self.session.get("cart")
         if not cart:
             # save an empty cart in the session
-            cart = self.session[settings.CART_SESSION_ID] = {}
+            cart = self.session["cart"] = {}
         self.cart = cart
 
-    def add(self, product, quantity=1, update_quantity=False):    # Update part is not needed
+    def add(
+        self, product, quantity=1, update_quantity=False
+    ):  # Update part is not needed
         """
-            Добавить продукт в корзину или обновить его количество.
+        Добавить продукт в корзину или обновить его количество.
         """
         product_id = str(product.id)
         if product_id not in self.cart:
-            self.cart[product_id] = {'quantity': 0,
-                                     'price': str(product.price)}
+            self.cart[product_id] = {"quantity": 0, "price": str(product.price)}
         if quantity <= 0:
             self.remove(product)
             return
         if update_quantity:
-            self.cart[product_id]['quantity'] = quantity
+            self.cart[product_id]["quantity"] = quantity
         else:
-            self.cart[product_id]['quantity'] = quantity  # how is it really working
+            self.cart[product_id]["quantity"] = quantity  # how is it really working
         self.save()
 
     def remove(self, product):
@@ -43,7 +44,7 @@ class Cart(object):
 
     def save(self):
         # Обновление сессии cart
-        self.session[settings.CART_SESSION_ID] = self.cart
+        self.session["cart"] = self.cart
         # Отметить сеанс как "измененный", чтобы убедиться, что он сохранен
         self.session.modified = True
 
@@ -55,27 +56,26 @@ class Cart(object):
         # получение объектов product и добавление их в корзину
         products = Product.objects.filter(id__in=product_ids)
         for product in products:
-            self.cart[str(product.id)]['product'] = product
+            self.cart[str(product.id)]["product"] = product
 
         for item in self.cart.values():
-            item['price'] = int(item['price'])
-            item['total_price'] = item['price'] * item['quantity']
+            item["price"] = int(item["price"])
+            item["total_price"] = item["price"] * item["quantity"]
             yield item
 
     def __len__(self):
         """
         Подсчет всех товаров в корзине.
         """
-        return sum(item['quantity'] for item in self.cart.values())
+        return sum(item["quantity"] for item in self.cart.values())
 
     def get_total_price(self):
         """
         Подсчет стоимости товаров в корзине.
         """
-        return sum(int(item['price']) * item['quantity'] for item in
-                   self.cart.values())
+        return sum(int(item["price"]) * item["quantity"] for item in self.cart.values())
 
     def clear(self):
         # удаление корзины из сессии
-        del self.session[settings.CART_SESSION_ID]
+        del self.session["cart"]
         self.session.modified = True
