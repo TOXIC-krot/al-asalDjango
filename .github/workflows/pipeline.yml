@@ -23,7 +23,6 @@ jobs:
 
     - name: Deploy to server
       run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }} 'cd /home/projects/al-asal'
-        ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }} 'git pull origin main'
+        ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }} 'cd /home/projects/al-asal && git pull origin main'
         ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }} 'docker compose down --remove-orphans'
         ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }} 'docker compose up -d --buil'
