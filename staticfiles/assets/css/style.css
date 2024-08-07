@@ -16,10 +16,7 @@ a { text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 /* ---- products_list.html ---- */
-.products-menu {
-    /* display: none; */
-    z-index: inherit;
-}
+.products-menu { display: none; }
 
 /* ---- cart_detail.html (order) ---- */
 .order-header { background: linear-gradient(45deg, #ffae00, #f29010); }

@@ -1,14 +1,27 @@
+.products-list { background-color: #e3e3e3; }
+
 .cards-box {
     display: flex;
     flex-wrap: wrap;
 }
 
-.product-card {
-    padding: 20px;
-    width: 33.333333%;
+.product-col {
+    padding: 10px;
+    width: 25%;
 }
 
-.product-card > img { width: 100%; }
+.product-card {
+    border: 0.5px solid #b5b5b5;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.product-img > img { width: 100%; }
+
+.product-info {
+    padding: 5px 10px;
+}
 
 form.product-add > .quantity-decrement, form.product-add > .quantity { display: none; }
 
@@ -21,7 +34,6 @@ form.product-add > .quantity-increment::after {
     content: " Qo'shish";
     font-weight: 400;
 }
-
 
 .quantity-selector {
     position: relative;
@@ -89,7 +101,7 @@ form.product-add > .quantity-increment::after {
 }
 
 @media (max-width:1060px) {
-    .product-card > .product-name {
+    .product-info > .product-name {
         font-size: 23px;
     }
     .product-price {
@@ -119,13 +131,13 @@ form.product-add > .quantity-increment::after {
     .cart-img {
         border-radius: 3px;
     }
-    .product-card > p {
+    .product-info > p {
         margin-bottom: 10px;
     }
 }
 
 @media (max-width:905px) {
-    .product-card > .product-name {
+    .product-info > .product-name {
         font-size: 20px;
     }
     .product-price {
@@ -154,7 +166,7 @@ form.product-add > .quantity-increment::after {
     .quantity {
         font-size: 17px;
     }
-    .product-card > p {
+    .product-info > p {
         font-size: 12px;
     }
 }
@@ -181,13 +193,12 @@ form.product-add > .quantity-increment::after {
 }
 
 @media (max-width:520px) {
-    .product-card > .product-name {
+    .product-info > .product-name {
         font-size: 16px;
     }
 }
 
 @media (max-width:350px) {
-
     .form {
         width: 72%;
     }
