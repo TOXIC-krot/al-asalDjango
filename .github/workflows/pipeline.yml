@@ -23,4 +23,4 @@ jobs:
 
     - name: Deploy to server
       run: |
-        ssh -o StrictHostKeyChecking=${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }} 'ls -la'
+        ssh -o StrictHostKeyChecking=${SERVER_USERNAME}@${SERVER_IP} 'ls -la'
