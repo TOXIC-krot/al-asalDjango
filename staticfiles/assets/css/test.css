@@ -23,40 +23,31 @@
     padding: 5px 10px;
 }
 
-form.product-add > .quantity-decrement, form.product-add > .quantity { display: none; }
+.product-add .quantity-decrement, .product-add .quantity { display: none; }
 
-form.product-add > .quantity-increment {
-    width: 100%!important;
-    background-color: #f3930f!important;
+#add-product-div {
+    flex-direction: column;
 }
 
-form.product-add > .quantity-increment::after {
-    content: " Qo'shish";
-    font-weight: 400;
-}
-
-.quantity-selector {
-    position: relative;
-    margin: 20px 0;
+.product-add {
+    flex-direction: row!important;
 }
 
 .form {
-    position: absolute;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: gray;
 }
 
-.quantity-increment {
-    width: 40%;
+.form > button {
     height: 40px;
+    padding: 10px;
     border-radius: 5px;
     font-size: 20px;
     font-weight: 600;
-    border: 0;
-    background-color: green;
-    color: white;
+    border: 0.5px solid #b5b5b5;
 }
 
 .quantity {
@@ -64,20 +55,8 @@ form.product-add > .quantity-increment::after {
     text-align: center;
 }
 
-.quantity-decrement {
-    width: 40%;
-    height: 40px;
-    border-radius: 5px;
-    font-size: 20px;
-    font-weight: 600;
-    border: 0;
-    background-color: red;
-    color: white;
-}
-
 .product-price {
-    font-size: 30px;
-    text-decoration: underline;
+    font-size: 20px;
 }
 
 /* basket */
