@@ -161,10 +161,6 @@ form.product-add > .quantity-increment::after {
 }
 
 @media (max-width:600px) {
-    .form {
-        width: 59%;
-        margin-bottom: 10px;
-    }
     .cart-img {
         margin-bottom: 5px;
         border-radius: 10px;
@@ -172,9 +168,6 @@ form.product-add > .quantity-increment::after {
     .product-stock {
         left: 6px;
         bottom: 6px;
-    }
-    .form {
-        width: 40%;
     }
     .cart > .product-name {
         line-height: 15px;
@@ -184,11 +177,5 @@ form.product-add > .quantity-increment::after {
 @media (max-width:520px) {
     .product-info > .product-name {
         font-size: 16px;
-    }
-}
-
-@media (max-width:350px) {
-    .form {
-        width: 72%;
     }
 }
