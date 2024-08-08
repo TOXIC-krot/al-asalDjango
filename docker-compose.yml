@@ -16,7 +16,7 @@ services:
   web:
     build:
       context: ./
-      dockerfile: Dockerfile
+      dockerfile: compose/django/Dockerfile
     container_name: al_asal_web
     command: gunicorn core.wsgi:application --bind 0.0.0.0:${DJANGO_PORT} --workers=4
     volumes:
