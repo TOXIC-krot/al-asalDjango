@@ -7,21 +7,28 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='User',
+            name="User",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('user_id', models.BigIntegerField(unique=True)),
-                ('username', models.CharField(blank=True, max_length=255, null=True)),
-                ('first_name', models.CharField(max_length=255)),
-                ('last_name', models.CharField(blank=True, max_length=255, null=True)),
-                ('phone_number', models.CharField(max_length=15)),
-                ('registered_at', models.DateTimeField(auto_now_add=True)),
-                ('last_active_at', models.DateTimeField(auto_now=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("user_id", models.BigIntegerField(unique=True)),
+                ("username", models.CharField(blank=True, max_length=255, null=True)),
+                ("first_name", models.CharField(max_length=255)),
+                ("last_name", models.CharField(blank=True, max_length=255, null=True)),
+                ("phone_number", models.CharField(max_length=15)),
+                ("registered_at", models.DateTimeField(auto_now_add=True)),
+                ("last_active_at", models.DateTimeField(auto_now=True)),
             ],
         ),
     ]

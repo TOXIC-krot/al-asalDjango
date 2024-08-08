@@ -8,42 +8,81 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(db_index=True, max_length=200, verbose_name='Ism')),
-                ('slug', models.SlugField(max_length=200, unique=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(db_index=True, max_length=200, verbose_name="Ism"),
+                ),
+                ("slug", models.SlugField(max_length=200, unique=True)),
             ],
             options={
-                'verbose_name': 'Asal turi',
-                'verbose_name_plural': 'Asal turlari',
-                'ordering': ('name',),
+                "verbose_name": "Asal turi",
+                "verbose_name_plural": "Asal turlari",
+                "ordering": ("name",),
             },
         ),
         migrations.CreateModel(
-            name='Product',
+            name="Product",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(db_index=True, max_length=200, verbose_name='Ism')),
-                ('slug', models.SlugField(default='test', max_length=200)),
-                ('image', models.ImageField(blank=True, upload_to='products/', verbose_name='Rasmi')),
-                ('description', models.TextField(blank=True, verbose_name='Tavsif')),
-                ('price', models.PositiveIntegerField(verbose_name='Narx')),
-                ('stock', models.PositiveIntegerField(verbose_name='Mavjud')),
-                ('available', models.BooleanField(default=True, verbose_name='Status')),
-                ('weight', models.DecimalField(decimal_places=2, max_digits=10, verbose_name="Og'irligi")),
-                ('created', models.DateTimeField(auto_now_add=True)),
-                ('updated', models.DateTimeField(auto_now=True)),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='products', to='index.category', verbose_name='Kategoriya')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(db_index=True, max_length=200, verbose_name="Ism"),
+                ),
+                ("slug", models.SlugField(default="test", max_length=200)),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True, upload_to="products/", verbose_name="Rasmi"
+                    ),
+                ),
+                ("description", models.TextField(blank=True, verbose_name="Tavsif")),
+                ("price", models.PositiveIntegerField(verbose_name="Narx")),
+                ("stock", models.PositiveIntegerField(verbose_name="Mavjud")),
+                ("available", models.BooleanField(default=True, verbose_name="Status")),
+                (
+                    "weight",
+                    models.DecimalField(
+                        decimal_places=2, max_digits=10, verbose_name="Og'irligi"
+                    ),
+                ),
+                ("created", models.DateTimeField(auto_now_add=True)),
+                ("updated", models.DateTimeField(auto_now=True)),
+                (
+                    "category",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="products",
+                        to="index.category",
+                        verbose_name="Kategoriya",
+                    ),
+                ),
             ],
             options={
-                'ordering': ('name',),
-                'index_together': {('id', 'slug')},
+                "ordering": ("name",),
+                "index_together": {("id", "slug")},
             },
         ),
     ]

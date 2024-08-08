@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('index', '0004_alter_category_slug'),
+        ("index", "0004_alter_category_slug"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='product',
-            name='available',
-            field=models.BooleanField(default=True, verbose_name='Mavjud'),
+            model_name="product",
+            name="available",
+            field=models.BooleanField(default=True, verbose_name="Mavjud"),
         ),
         migrations.AlterField(
-            model_name='product',
-            name='stock',
-            field=models.PositiveIntegerField(verbose_name='Miqdori'),
+            model_name="product",
+            name="stock",
+            field=models.PositiveIntegerField(verbose_name="Miqdori"),
         ),
     ]
