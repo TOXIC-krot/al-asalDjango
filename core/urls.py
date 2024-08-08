@@ -3,10 +3,18 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from django.shortcuts import render
+
+
+def tailwind_sample(request):
+    return render(request, "sample.html")
+
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("cart/", include("apps.cart.urls")),
     path("user/", include("apps.user.urls")),
+    path("tailwind/", tailwind_sample, name="tailwind_sample"),
     path("", include("apps.index.urls")),
 ]
 
