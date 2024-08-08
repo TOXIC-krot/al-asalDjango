@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y \
     netcat \
     && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt requirements.txt
+COPY requirements/base.txt base.txt
+COPY requirements/production.txt requirements.txt
 
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
