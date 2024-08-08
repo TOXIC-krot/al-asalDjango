@@ -7,10 +7,12 @@ async def main() -> None:
     try:
         await bot.delete_webhook(drop_pending_updates=True)
         await dispatcher.start_polling(bot)
+
+        print("Bot started!")
     except KeyboardInterrupt:
-        print("Bot stopped manually")
+        print("Bot stopped manually!")
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"Error: {e}")
 
 
 if __name__ == "__main__":
