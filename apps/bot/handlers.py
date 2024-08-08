@@ -1,12 +1,14 @@
-from aiogram import F
+from aiogram import F, Router
 from aiogram.filters import Command
 from aiogram.types import Message, ReplyKeyboardRemove
 
-from apps.bot.loader import dispatcher
 from apps.bot.keyboards import contact_keyboard, location_keyboard, webapp_keyboard
 
 
-@dispatcher.message(Command("start"))
+router = Router()
+
+
+@router.message(Command("start"))
 async def start_handler(message: Message):
     photo_url = "https://heartfelt-cascaron-a8b855.netlify.app/assets/logo.jpg"
     caption_text = (
@@ -19,7 +21,7 @@ async def start_handler(message: Message):
     )
 
 
-@dispatcher.message(F.contact)
+@router.message(F.contact)
 async def contact_handler(message: Message):
     await message.answer(
         "Mahsulotlarni ko'rish uchun tugmani bosing!",
@@ -30,7 +32,7 @@ async def contact_handler(message: Message):
     )
 
 
-@dispatcher.message(F.location)
+@router.message(F.location)
 async def location_handler(message: Message):
     await message.answer(
         "Sizning manzilingiz qabul qilindi. Operatorlarimiz 24 soat ichida siz bilan bog'lanadi.",

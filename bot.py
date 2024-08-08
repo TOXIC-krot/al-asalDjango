@@ -1,10 +1,13 @@
 import asyncio
 
 from apps.bot.loader import bot, dispatcher
+from apps.bot.handlers import router
 
 
 async def main() -> None:
     try:
+        dispatcher.include_routers(router)
+
         await bot.delete_webhook(drop_pending_updates=True)
         await dispatcher.start_polling(bot)
 
