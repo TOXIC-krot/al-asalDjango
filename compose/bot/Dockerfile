@@ -20,7 +20,7 @@ WORKDIR $APP_HOME
 
 COPY . .
 
-ENTRYPOINT ["python", "main.py"]
+ENTRYPOINT ["python", "bot.py"]
 
 RUN rm -rf /var/cache/apt/*
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
