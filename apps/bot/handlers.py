@@ -27,14 +27,16 @@ async def contact_handler(message: Message):
         "Mahsulotlarni ko'rish uchun tugmani bosing!",
         reply_markup=webapp_keyboard,
     )
-    await message.answer(
-        "Iltimos, lokatsiyangizni yuboring:", reply_markup=location_keyboard
-    )
 
 
-@router.message(F.location)
-async def location_handler(message: Message):
-    await message.answer(
-        "Sizning manzilingiz qabul qilindi. Operatorlarimiz 24 soat ichida siz bilan bog'lanadi.",
-        reply_markup=ReplyKeyboardRemove(),
-    )
+#     await message.answer(
+#         "Iltimos, lokatsiyangizni yuboring:", reply_markup=location_keyboard
+#     )
+
+
+# @router.message(F.location)
+# async def location_handler(message: Message):
+#     await message.answer(
+#         "Sizning manzilingiz qabul qilindi. Operatorlarimiz 24 soat ichida siz bilan bog'lanadi.",
+#         reply_markup=ReplyKeyboardRemove(),
+#     )
