@@ -18,6 +18,7 @@ else:
     ALLOWED_HOSTS = ["www.al-asal.uz"]
 
 DJANGO_APPS = [
+    "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

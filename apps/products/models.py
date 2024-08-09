@@ -37,3 +37,9 @@ class Product(BaseModel):
 
     def __str__(self):
         return self.title
+
+
+__all__ = [
+    "Category",
+    "Product",
+]
