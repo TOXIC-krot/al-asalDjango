@@ -8,8 +8,8 @@ class Category(BaseModel):
     title = models.CharField(max_length=256)
 
     class Meta:
-        verbose_name = "Asal turi"
-        verbose_name_plural = "Asal turlari"
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
 
     def __str__(self):
         return self.title
@@ -32,8 +32,8 @@ class Product(BaseModel):
     is_available = models.BooleanField(default=True)
 
     class Meta:
-        verbose_name = "Mahsulot"
-        verbose_name_plural = "Mahsulotlar"
+        verbose_name = "Product"
+        verbose_name_plural = "Products"
 
     def __str__(self):
         return self.title
