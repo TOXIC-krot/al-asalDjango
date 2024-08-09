@@ -1,5 +1,4 @@
 from django.views import generic
-
 from apps.products import models
 
 

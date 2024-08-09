@@ -1,0 +1,13 @@
+{% extends 'sample.html' %}
+
+{% block content %}
+
+<div class="p-4 bg-green-400 flex flex-col justify-between items-center space-y-2">
+  <div class="p-4 bg-red-300 flex flex-col space-y-2">
+    <span>{{ product.title }}</span>
+    <span>{{ product.description }}</span>
+    <span>{{ product.category }}</span>
+  </div>
+</div>
+
+{% endblock content %}
