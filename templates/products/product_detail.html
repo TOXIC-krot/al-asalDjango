@@ -5,13 +5,13 @@
 {% block content %}
 
 <div class="pb-16">
-  <div class="relative">
+  <div>
     <img src="{{ product.image.url }}">
-    <div id="icon-container" class="transition-all">
-      <a href="{% url 'product_list' %}" class="border rounded-full p-2 shadow shadow-slate-300 absolute left-4 top-4 bg-white">
+    <div id="icon-container" class="transition-all fixed top-0 w-full flex justify-between items-center p-4">
+      <a href="{% url 'product_list' %}" class="border rounded-full p-2 shadow shadow-slate-400 bg-white">
         <img class="w-5" src="{% static 'assets/icons/x.svg' %}" alt="X">
       </a>
-      <button class="border rounded-full p-2 shadow shadow-slate-300 absolute right-4 top-4 bg-white">
+      <button class="border rounded-full p-2 shadow shadow-slate-400 bg-white">
         <img class="w-5" src="{% static 'assets/icons/cart.svg' %}" alt="X">
       </button>
     </div>
@@ -24,7 +24,6 @@
     </div>
     <span class="text-slate-600 font-medium text-sm">{{ product.description }}</span>
   </div> 
-
 </div>
 <div class="fixed inset-x-0 bottom-0 w-full flex justify-between items-center border bg-white py-2 px-4">
   <!-- if it is = 0, then just show "Savatga" button -->
@@ -42,5 +41,17 @@
     <span class="text-[11px] font-light">O'tish</span>
   </a>
 </div>
+
+<script>
+  window.addEventListener('scroll', function() {
+    var iconContainer = document.getElementById('icon-container');
+    if (window.scrollY > 0) {
+      iconContainer.classList.add('icon-scrolled');
+    } else {
+      iconContainer.classList.remove('icon-scrolled');
+    }
+  });
+
+</script>
 
 {% endblock content %}
