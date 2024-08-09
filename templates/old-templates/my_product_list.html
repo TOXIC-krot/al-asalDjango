@@ -34,6 +34,7 @@
                         <div class="product-card" href="{{ product.get_absolute_url }}">
                             <div class="product-img"><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "assets/images/no_image.png" %}{% endif %}" alt="cart-img"></div>
                             <div class="product-info">
+<<<<<<< Updated upstream:templates/old-templates/my_product_list.html
                                 <span class="product-name">{{ product.name }} <span class="product-weight">{{ product.weight }}&nbsp;kg</span></span><br />
                                 <span class="product-stock">{{ product.stock }} ta mavjud</span>
                                 <div class="d-flex align-items-center justify-content-between {% if product.selected_quantity == 0 %}product-add{% endif %}" id="add-product-div">
@@ -50,6 +51,22 @@
                                         </form>
                                     </div>
                                 </div>
+=======
+                                <span class="product-name">{{ product.name }} <span class="product-weight">({{ product.weight }}&nbsp;kg)</span></span><br />
+                                <span class="product-price" data-value-type="price">{{ product.price }} so'm</span><br />
+                                <div class="quantity-selector d-flex justify-content-between align-items-center">
+                                    <form action="{% url 'cart_add' product.id %}" id="cart-form-{{ product.id }}" class="form {% if product.selected_quantity == 0 %}product-add{% endif %}" method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="quantity" id="quantity-{{ product.id }}" value="{{ product.selected_quantity }}">
+                                        <input type="hidden" name="update" id="update-{{ product.id }}" value="false">
+
+                                        <button type="button" class="quantity-decrement" data-product-id="{{ product.id }}">-</button>
+                                        <h3 class="quantity" id="result-{{ product.id }}">{{ product.selected_quantity }}</h3>
+                                        <button type="button" class="quantity-increment" data-product-id="{{ product.id }}" data-stock="{{ product.stock }}">+</button>
+                                    </form>
+                                </div>
+                                <span class="product-stock">{{ product.stock }} ta mavjud</span>
+>>>>>>> Stashed changes:templates/my_product_list.html
                             </div>
                         </div>
                     </div>

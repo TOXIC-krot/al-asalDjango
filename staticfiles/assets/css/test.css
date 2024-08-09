@@ -1,0 +1,205 @@
+.products-list { background-color: #e3e3e3; }
+
+.cards-box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product-col {
+    padding: 10px;
+    width: 25%;
+}
+
+.product-card {
+    border: 0.5px solid #b5b5b5;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.product-img > img { width: 100%; }
+
+.product-info {
+    padding: 5px 10px;
+}
+
+form.product-add > .quantity-decrement, form.product-add > .quantity { display: none; }
+
+form.product-add > .quantity-increment {
+    width: 100%!important;
+    background-color: #f3930f!important;
+}
+
+form.product-add > .quantity-increment::after {
+    content: " Qo'shish";
+    font-weight: 400;
+}
+
+.quantity-selector {
+    position: relative;
+    margin: 20px 0;
+}
+
+.form {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quantity-increment {
+    width: 40%;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    border: 0;
+    background-color: green;
+    color: white;
+}
+
+.quantity {
+    font-size: 20px;
+    text-align: center;
+}
+
+.quantity-decrement {
+    width: 40%;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    border: 0;
+    background-color: red;
+    color: white;
+}
+
+.product-price {
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+/* basket */
+
+.cart-link {
+    width: 80px;
+    height: 80px;
+    background-color: yellow;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-link > svg {
+    width: 40px;
+    height: 40px;
+}
+
+@media (max-width:1060px) {
+    .product-info > .product-name {
+        font-size: 23px;
+    }
+    .product-price {
+        font-size: 23px;
+    }
+}
+
+@media (max-width:995px) {
+    .product-card {
+        padding: 12px;
+    }
+    .product-stock {
+        left: 12px;
+        bottom: 12px;
+        font-size: 12px;
+    }
+    .quantity-increment {
+        width: 35px;
+        height: 35px;
+        font-size: 17px;
+    }
+    .quantity-decrement {
+        width: 35px;
+        height: 35px;
+        font-size: 17px;
+    }
+    .cart-img {
+        border-radius: 3px;
+    }
+    .product-info > p {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width:905px) {
+    .product-info > .product-name {
+        font-size: 20px;
+    }
+    .product-price {
+        font-size: 20px;
+    }
+}
+
+@media (max-width:785px) {
+    .product-price {
+        font-size: 17px;
+    }
+    .product-card {
+        width: 50%;
+    }
+}
+
+@media (max-width:675px) {
+    .quantity-increment {
+        width: 32px;
+        height: 32px;
+    }
+    .quantity-decrement {
+        width: 32px;
+        height: 32px;
+    }
+    .quantity {
+        font-size: 17px;
+    }
+    .product-info > p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width:600px) {
+    .form {
+        width: 59%;
+        margin-bottom: 10px;
+    }
+    .cart-img {
+        margin-bottom: 5px;
+        border-radius: 10px;
+    }
+    .product-stock {
+        left: 6px;
+        bottom: 6px;
+    }
+    .form {
+        width: 40%;
+    }
+    .cart > .product-name {
+        line-height: 15px;
+    }
+}
+
+@media (max-width:520px) {
+    .product-info > .product-name {
+        font-size: 16px;
+    }
+}
+
+@media (max-width:350px) {
+    .form {
+        width: 72%;
+    }
+}
