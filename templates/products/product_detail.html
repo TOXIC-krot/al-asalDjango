@@ -19,7 +19,7 @@
   <div class="p-4">
     <span class="text-xl font-medium">{{ product.title }} {{ product.weight }} g</span>
     <div class="flex justify-between items-baseline mt-2 mb-4">
-      <span class="font-bold" data-value-type="price">{{ product.price }} UZS <span class="font-normal">/ 1&nbsp;dona</span></span>
+      <div><span class="font-bold" data-value-type="price">{{ product.price }} UZS </span><span class="font-normal">/ 1&nbsp;dona</span></div>
       <span class="text-sm text-right" data-value-type="price">{{ product.count }} ta mavjud</span>
     </div>
     <span class="text-slate-600 font-medium text-sm">{{ product.description }}</span>
@@ -51,7 +51,6 @@
       iconContainer.classList.remove('icon-scrolled');
     }
   });
-
 </script>
 
 {% endblock content %}
