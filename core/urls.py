@@ -15,7 +15,8 @@ urlpatterns = [
     path("cart/", include("apps.cart.urls")),
     path("user/", include("apps.user.urls")),
     path("tailwind/", tailwind_sample, name="tailwind_sample"),
-    path("", include("apps.index.urls")),
+    # path("", include("apps.index.urls")),
+    path("products/", include("apps.products.urls")),
 ]
 
 if settings.DEBUG:
