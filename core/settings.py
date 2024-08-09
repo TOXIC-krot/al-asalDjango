@@ -35,9 +35,6 @@ CUSTOM_APPS = [
     "apps.cart",
     "apps.products",
     "apps.users",
-    # temp
-    "apps.index",
-    "apps.user",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + CUSTOM_APPS
