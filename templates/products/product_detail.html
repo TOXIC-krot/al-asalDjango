@@ -2,17 +2,32 @@
 
 {% block content %}
 
-<div class="p-4 bg-green-400 flex flex-col justify-between items-center space-y-2">
-  <div class="p-4 bg-red-300 flex flex-col space-y-2">
-    <span>{{ product.category }}</span>
-    <span>{{ product.title }}</span>
-    <span>{{ product.description }}</span>
-    <img src="{{ product.image.url }}" alt="">
-    <span>{{ product.weight }}</span>
-    <span>{{ product.price }}</span>
-    <span>{{ product.count }}</span>
-    <span>{{ product.is_available }}</span>
+<div class="pb-16">
+  <div class="relative"> <!-- for image part -->
+    <img src="{{ product.image.url }}">
+    <button class="border rounded-full px-3 py-1 shadow shadow-black absolute left-4 top-4">X</button>
+    <button class="border rounded-full px-3 py-1 shadow shadow-black absolute right-4 top-4">C</button>
+  </div> 
+  <div class="p-4"> <!-- for text body part -->
+    <span class="text-2xl font-medium">{{ product.title }} {{ product.weight }} g</span>
+    <div class="flex justify-between my-1">
+      <span class="text-lg font-bold">{{ product.price }} UZS <span class="font-medium">/ 1 dona</span></span>
+      <span class="font-medium">{{ product.count }} ta mavjud</span>
+    </div>
+    <span class="text-slate-600 font-medium">{{ product.description }}</span>
+  </div> 
+
+</div>
+<div class="fixed inset-x-0 bottom-0 w-full flex justify-between items-center border bg-white py-2 px-4"> <!-- fixed footer -->
+  <div class="flex items-center justify-between border border-black rounded-md flex-1 h-14 mr-2 py-0.5"> <!-- for counter -->
+    <button class="text-4xl px-2">-</button>
+    <span class="text-center text-xl">4 dona</span>
+    <button class="text-4xl px-2">+</button>
   </div>
+  <a href="#" class="flex flex-col items-center text-white bg-black py-0.5 border border-black rounded-md flex-1 h-14">
+    <span class="text-xl">Savatga</span>
+    <span class="text-sm">o'tish</span>
+  </a>
 </div>
 
 {% endblock content %}
