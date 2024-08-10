@@ -13,6 +13,10 @@
             <summary class="text-lg font-semibold">Asal turlari:</summary>
             <ul class="flex flex-col gap-4 md:flex-row md:gap-6">
 
+                <li>
+                    <a href="{% url 'product_list' %}" class="block p-2 bg-white text-blue-500 rounded hover:bg-blue-100 transition-colors duration-300">Barchasi</a>
+                </li>
+
                 {% for category in categories %}
                     <li>
                         <a href="{% url 'product_list_by_category' category.id %}" class="block p-2 bg-white text-blue-500 rounded hover:bg-blue-100 transition-colors duration-300">{{ category.title }}</a>
