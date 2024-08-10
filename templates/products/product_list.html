@@ -42,7 +42,7 @@
     <div class="flex flex-wrap gap-4">
         {% for product in products %}
         <a href="{% url 'product_detail' product.id %}">
-            <div class="min-w-[170px] h-60 flex flex-col border border-gray-300 rounded-xl bg-white shadow-sm">
+            <div class="w-[170px] h-60 flex flex-col border border-gray-300 rounded-xl bg-white shadow-sm">
                 <div class="h-1/2">
                     <img class="w-full h-full object-cover rounded-t-xl" src="{{ product.image.url }}" alt="Product Image">
                 </div>
