@@ -39,14 +39,14 @@
             </ul>
         </details>
     </nav>
-    <div class="flex flex-wrap gap-4">
+    <div class="flex flex-wrap grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {% for product in products %}
         <a href="{% url 'product_detail' product.id %}">
-            <div class="w-[170px] h-60 flex flex-col border border-gray-300 rounded-xl bg-white shadow-sm">
-                <div class="h-1/2">
+            <div class="h-60 sm:h-80 flex flex-col border border-gray-300 rounded-xl bg-white shadow-sm">
+                <div class="h-3/5">
                     <img class="w-full h-full object-cover rounded-t-xl" src="{{ product.image.url }}" alt="Product Image">
                 </div>
-                <div class="h-1/2 p-2 flex flex-col justify-between">
+                <div class="h-2/5 p-2 flex flex-col justify-between">
                     <div class="overflow-hidden">
                         <p class="text-sm truncate">{{ product.title }}</p>
                     </div>
