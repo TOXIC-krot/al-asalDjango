@@ -1,46 +1,73 @@
-{% extends '_base.html' %}
-
-{% load static %}
-
-{% block content %}
+{% extends '_base.html' %} {% load static %} {% block content %}
 
 <div class="p-4">
 
-  <div class="mb-4">
-    <button>
-      <img class="p-2 border border-gray-400 rounded-xl" src="{% static 'assets/icons/filters.svg' %}" alt="Filters">
-    </button>
-  </div>
-
-  <div class="grid grid-cols-2 gap-2">
-    {% for product in products %}
-      <a href="{% url 'product_detail' product.id %}">
-        <div class="h-60 flex flex-col justify-between border border-gray-300 rounded-xl bg-white shadow-sm">
-          <div class="h-1/2">
-            <img class="w-full h-full object-cover rounded-t-xl" src="{{ product.image.url }}" alt="Product Image">
-          </div>
-          <div class="h-1/2 p-2 flex flex-col justify-between">
-            <div class="overflow-hidden">
-              <p class="text-sm truncate">{{ product.title }}</p>
-            </div>
-            <div>
-              <p class="text-sm" data-value-type="price">{{ product.count }} dona</p>
-            </div>
-            <div class="flex justify-between items-center">
-              <div>
-                <p class="text-sm font-semibold" data-value-type="price">{{ product.price }} UZS</p>
-              </div>
-              <div>
-                <button class="w-8 h-8 flex justify-center items-center">
+    <div class="mb-4">
+        <button>
+          <img class="p-2 border border-gray-400 rounded-xl" src="{% static 'assets/icons/filters.svg' %}" alt="Filters">
+        </button>
+    </div>
+    <nav class="bg-gray-100 p-4 mb-5">
+        <!-- <p>Asal turlari:</p> -->
+        <details class="p-0">
+            <summary class="text-lg font-semibold">Asal turlari:</summary>
+            <ul class="flex flex-col gap-4 md:flex-row md:gap-6">
+                <li>
+                    <a href="#" class="block p-2 bg-white text-blue-500 rounded hover:bg-blue-100 transition-colors duration-300">Asal</a>
+                </li>
+                <li>
+                    <a href="#" class="block p-2 bg-white text-blue-500 rounded hover:bg-blue-100 transition-colors duration-300">Asal</a>
+                </li>
+                <li>
+                    <a href="#" class="block p-2 bg-white text-blue-500 rounded hover:bg-blue-100 transition-colors duration-300">Asal</a>
+                </li>
+                <li>
+                    <a href="#" class="block p-2 bg-white text-blue-500 rounded hover:bg-blue-100 transition-colors duration-300">Asal</a>
+                </li>
+                <li>
+                    <a href="#" class="block p-2 bg-white text-blue-500 rounded hover:bg-blue-100 transition-colors duration-300">Asal</a>
+                </li>
+                <li>
+                    <a href="#" class="block p-2 bg-white text-blue-500 rounded hover:bg-blue-100 transition-colors duration-300">Asal</a>
+                </li>
+                <li>
+                    <a href="#" class="block p-2 bg-white text-blue-500 rounded hover:bg-blue-100 transition-colors duration-300">Asal</a>
+                </li>
+                <li>
+                    <a href="#" class="block p-2 bg-white text-blue-500 rounded hover:bg-blue-100 transition-colors duration-300">Asal</a>
+                </li>
+            </ul>
+        </details>
+    </nav>
+    <div class="flex flex-wrap gap-4">
+        {% for product in products %}
+        <a href="{% url 'product_detail' product.id %}">
+            <div class="min-w-[170px] h-60 flex flex-col border border-gray-300 rounded-xl bg-white shadow-sm">
+                <div class="h-1/2">
+                    <img class="w-full h-full object-cover rounded-t-xl" src="{{ product.image.url }}" alt="Product Image">
+                </div>
+                <div class="h-1/2 p-2 flex flex-col justify-between">
+                    <div class="overflow-hidden">
+                        <p class="text-sm truncate">{{ product.title }}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm">{{ product.count }} dona</p>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-sm font-semibold">{{ product.price }} UZS</p>
+                        </div>
+                        <div>
+                            <button class="w-8 h-8 flex justify-center items-center">
                   <img class="p-1 border border-gray-400 rounded-lg" src="{% static 'assets/icons/add.svg' %}" alt="Add">
                 </button>
-              </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </a>
-    {% endfor %}
-  </div>
+        </a>
+        {% endfor %}
+    </div>
 
 </div>
 
