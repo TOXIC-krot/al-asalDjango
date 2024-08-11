@@ -23,13 +23,6 @@ async def start_handler(message: Message):
 
 @router.message(F.contact)
 async def contact_handler(message: Message):
-    # Remove the contact keyboard
-    await message.answer(
-        "Mahsulotlarni ko'rish uchun tugmani bosing!",
-        reply_markup=ReplyKeyboardRemove()  # Remove the contact keyboard
-    )
-    
-    # Send a new message with the new webapp keyboard
     await message.answer(
         "Mahsulotlarni ko'rish uchun tugmani bosing!",
         reply_markup=webapp_keyboard
