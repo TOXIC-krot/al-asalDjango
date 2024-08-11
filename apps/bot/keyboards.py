@@ -27,7 +27,8 @@ webapp_keyboard = InlineKeyboardMarkup(
                 web_app=WebAppInfo(url="https://www.al-asal.uz/products/"),
             )
         ]
-    ]
+    ],
+    keyboard=[]
 )
 
 location_keyboard = ReplyKeyboardMarkup(
