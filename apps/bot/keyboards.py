@@ -7,7 +7,7 @@ from aiogram.types import (
 )
 
 contact_keyboard = ReplyKeyboardMarkup(
-    keyboard=[
+    keyboard=[ # I think one [] is extra
         [
             KeyboardButton(
                 text="Kontaktni yuborish",

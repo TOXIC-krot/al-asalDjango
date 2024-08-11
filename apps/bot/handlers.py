@@ -12,9 +12,9 @@ router = Router()
 async def start_handler(message: Message):
     photo_url = "https://heartfelt-cascaron-a8b855.netlify.app/assets/logo.jpg"
     caption_text = (
-        'AsSalomu alaykum! "Al-asal" sahifamizga hush kelibsiz, '
-        "tizimni ishga tushirish uchun kelin tanishib olaylik, uning uchun, "
-        "o`z kontaktingizni junating."
+        "Assalomu alaykum! \"Al-asal\" sahifamizga xush kelibsiz, "
+        "tizimni ishga tushirish uchun keling avval tanishib olaylik, "
+        "o'z kontaktingizni jo'nating."
     )
     await message.answer_photo(
         photo=photo_url, caption=caption_text, reply_markup=contact_keyboard
@@ -23,9 +23,16 @@ async def start_handler(message: Message):
 
 @router.message(F.contact)
 async def contact_handler(message: Message):
+    # Remove the contact keyboard
     await message.answer(
         "Mahsulotlarni ko'rish uchun tugmani bosing!",
-        reply_markup=webapp_keyboard,
+        reply_markup=ReplyKeyboardRemove()  # Remove the contact keyboard
+    )
+    
+    # Send a new message with the new webapp keyboard
+    await message.answer(
+        "Mahsulotlarni ko'rish uchun tugmani bosing!",
+        reply_markup=webapp_keyboard
     )
 
 
