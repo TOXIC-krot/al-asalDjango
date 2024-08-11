@@ -16,7 +16,6 @@ contact_keyboard = ReplyKeyboardMarkup(
         ],
     ],
     resize_keyboard=True,
-    one_time_keyboard=True
 )
 
 webapp_keyboard = InlineKeyboardMarkup(
@@ -27,8 +26,7 @@ webapp_keyboard = InlineKeyboardMarkup(
                 web_app=WebAppInfo(url="https://www.al-asal.uz/products/"),
             )
         ]
-    ],
-    keyboard=[]
+    ]
 )
 
 location_keyboard = ReplyKeyboardMarkup(
