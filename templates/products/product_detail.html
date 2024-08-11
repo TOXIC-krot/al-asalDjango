@@ -1,6 +1,7 @@
 {% extends '_base.html' %}
 
 {% load static %}
+{% load cart_tags %}
 
 {% block content %}
 
@@ -8,12 +9,12 @@
   <div>
     <img src="{{ product.image.url }}">
     <div id="icon-container" class="transition-all fixed top-0 w-full flex justify-between items-center p-4">
-      <a href="{% url 'product_list' %}" class="border rounded-full p-2 shadow shadow-slate-400 bg-white">
+      <a href="{% url 'product_list' %}" class="border rounded-full p-2.5 shadow shadow-slate-400 bg-white">
         <img class="w-5" src="{% static 'assets/icons/x.svg' %}" alt="X">
       </a>
-      <button class="border rounded-full p-2 shadow shadow-slate-400 bg-white">
-        <img class="w-5" src="{% static 'assets/icons/cart.svg' %}" alt="Cart">
-        <span id="cart-total-count"></span>
+      <button class="border rounded-full p-2.5 shadow shadow-slate-400 bg-white relative">
+        <img class="w-5 -translate-x-px" src="{% static 'assets/icons/cart.svg' %}" alt="Cart">
+        <span id="cart-total-count" class="absolute top-1 right-1 h-3.5 w-4 border rounded-full bg-violet-700 text-white text-[9px]">{{ cart.total_count }}</span>
       </button>
     </div>
   </div> 
@@ -32,7 +33,11 @@
     <button class="update-cart" data-product-id="{{ product.id }}" data-action="decrement">
       <img class="pl-3 pr-1" src="{% static 'assets/icons/minus.svg' %}" alt="Minus">
     </button>
-    <span class="text-center leading-6" id="selected-quantity">4 dona</span> <!-- if it is "optom", then show "kg" instead of "dona" --> <!-- cart.cart|get_item:product.id|default:0  -->
+    <span class="text-center leading-6" id="selected-quantity">
+      {% with item=cart.cart|get_item:product.id %}
+        {{ item.quantity }} dona
+      {% endwith %}
+    </span> <!-- if it is "optom", then show "kg" instead of "dona" --> <!-- cart.cart|get_item:product.id|default:0  -->
     <button class="update-cart" data-product-id="{{ product.id }}" data-action="increment">
       <img class="pr-3 pl-1" src="{% static 'assets/icons/plus.svg' %}" alt="Plus">
     </button>
