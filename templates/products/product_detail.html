@@ -24,7 +24,22 @@
       <div><span class="font-bold" data-value-type="price">{{ product.price }} UZS </span><span class="font-normal">/ 1&nbsp;dona</span></div>
       <span class="text-sm text-right" data-value-type="price">{{ product.count }} ta mavjud</span>
     </div>
+   
+    <button id="open-popup" class="relative px-2 py-1 mb-3 bg-white text-black rounded hover:bg-gray-100 transition-colors duration-300 flex items-center">
+      <span>Asal haqida video</span>
+      <span class="absolute bottom-0 left-0 w-full border-b-2 border-slate-600"></span>
+    </button>
+    <div id="popup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+      <div class="bg-white rounded-lg p-6 w-11/12 sm:w-1/2 relative">
+        <button id="close-popup" class="absolute top-2 right-2 text-white bg-red-500 hover:bg-red-700 rounded-full px-3 py-1"> &times; </button>
+        <h2 class="text-xl font-semibold mb-4">Asal haqida video</h2>
+        <iframe class="w-full h-80 rounded-custom" src="{{ product.video_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
     <span class="text-slate-600 font-medium text-sm">{{ product.description }}</span>
+
   </div> 
 </div>
 <div class="fixed inset-x-0 bottom-0 w-full flex justify-between items-center border bg-white py-2 px-4">

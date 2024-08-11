@@ -12,21 +12,20 @@
           <img class="p-2 border border-gray-400 rounded-xl" src="{% static 'assets/icons/filters.svg' %}" alt="Filters">
         </button>
     </div>
-    <nav class="bg-gray-100 p-4 mb-5">
-        <!-- <p>Asal turlari:</p> -->
-        <details class="p-0">
-            <summary class="text-lg font-semibold">Asal turlari:</summary>
-            <ul class="flex flex-col gap-4 md:flex-row md:gap-6">
-                <li>
-                    <a href="{% url 'product_list' %}" class="block p-2 bg-white text-blue-500 rounded hover:bg-blue-100 transition-colors duration-300">Barchasi</a>
+    <nav class="mb-5">
+        <div class="w-full flex flex-col sm:flex-row justify-between items-center">
+            <h1 class="text-lg font-semibold mb-3 w-full sm:w-full sm:mb-0">Asal turlari:</h1>
+            <ul class="w-full sm:w-1/2 owl-carousel owl-theme flex gap-4 mt-3 sm:mt-0">
+                <li class="text-center border-b-2 border-gray-300 pb-2">
+                    <a href="{% url 'product_list' %}" class="block p-2 rounded hover:bg-gray-200 transition-colors duration-300 text-black sm:text-sm">Barchasi</a>
                 </li>
                 {% for category in categories %}
-                    <li>
-                        <a href="{% url 'product_list_by_category' category.id %}" class="block p-2 bg-white text-blue-500 rounded hover:bg-blue-100 transition-colors duration-300">{{ category.title }}</a>
-                    </li>
+                    <li class="text-center border-b-2 border-gray-300 pb-2">
+                        <a href="{% url 'product_list_by_category' category.id %}" class="block p-2 rounded hover:bg-gray-200 transition-colors duration-300 text-black sm:text-sm">{{ category.title }}</a>
+                    </li> <!-- birlashtirmaganmidik product_list va product_list_by_category larni -->
                 {% endfor %}
             </ul>
-        </details>
+        </div>
     </nav>
     <div class="flex flex-wrap grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {% for product in products %}
