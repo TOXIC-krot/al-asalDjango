@@ -1,6 +1,6 @@
 from django.db import models
 
-
+'''
 class Cart(models.Model):
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     item = models.CharField(max_length=255)
@@ -10,3 +10,4 @@ class Cart(models.Model):
 
     def __str__(self):
         return f"{self.item} - {self.quantity} pcs"
+'''

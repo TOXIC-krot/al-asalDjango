@@ -1,4 +1,39 @@
 import json
+from django.http import JsonResponse
+from django.views import View
+from apps.products.models import Product
+from apps.cart.cart import Cart
+
+class CartUpdateView(View):
+    def post(self, request, *args, **kwargs):
+        data = json.loads(request.body)
+        product_id = data.get('product_id')
+        action = data.get('action')
+
+        cart = Cart(request)
+
+        try:
+            product = Product.objects.get(id=product_id)
+        except Product.DoesNotExist:
+            return JsonResponse({'error': 'Product does not exist.'}, status=404)
+
+        if action == 'increment':
+            cart.add(product, quantity=1)     
+        elif action == 'decrement':
+            cart.add(product, quantity=-1)
+        elif action == 'delete':
+            cart.remove(product)
+        elif action == 'clear':
+            cart.clear()
+
+        return JsonResponse({
+            'success': True,
+            'quantity': cart.cart.get(str(product_id), {}).get('quantity', 0),
+            'total_count': cart.total_count,
+        })
+
+'''
+import json
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from apps.cart.models import Cart
@@ -45,7 +80,7 @@ def cart_detail(request, pk):
     elif request.method == 'DELETE':
         cart.delete()
         return JsonResponse({'status': 'deleted'})
-
+'''
 
 # from django.shortcuts import render, redirect, get_object_or_404
 # from django.http import JsonResponse

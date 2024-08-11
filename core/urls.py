@@ -12,7 +12,7 @@ def tailwind_sample(request):
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    # path("cart/", include("apps.cart.urls")),
+    path("cart/", include("apps.cart.urls")),
     # path("user/", include("apps.user.urls")),
     path("tailwind/", tailwind_sample, name="tailwind_sample"),
     path("products/", include("apps.products.urls")),

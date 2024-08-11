@@ -1,3 +1,5 @@
+{% load static %}  <!-- I added this, correct? -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,17 +26,6 @@
   {% block content %}
   {% endblock content %}
 
-  <script>
-    function formatNumber(number) {
-      return number.replace(/\B(?=(\d{3})+(?!\d))/g, '\u202F'); // \u2009 is the Unicode thin space
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      var priceElements = document.querySelectorAll('[data-value-type="price"]');
-      priceElements.forEach(element => {
-        element.textContent = formatNumber(element.textContent);
-      });
-    });
-  </script>
+  <script src="{% static 'assets/js/base.js' %}"></script>
 </body>
 </html>
