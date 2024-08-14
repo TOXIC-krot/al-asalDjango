@@ -10,8 +10,8 @@ class ProductListView(generic.ListView):
     def get_queryset(self):
         category_id = self.kwargs.get("category_id")
         if category_id:
-            return models.Product.objects.filter(category_id=category_id)
-        return models.Product.objects.all()
+            return models.Product.objects.filter(category_id=category_id, is_available=True)
+        return models.Product.objects.filter(is_available=True)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
