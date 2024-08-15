@@ -30,7 +30,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Update the UI based on the response data
                 const quantitySpan = buttonElement.parentNode.querySelector('#selected-quantity');
                 quantitySpan.textContent = data.quantity + ' dona';
-                document.getElementById('cart-total-count').innerText = data.total_count;
+
+                const cartCount = document.getElementById('cart-total-count');
+                cartCount.innerText = data.total_count;
+
+                if (data.total_count === 1) cartCount.classList.remove('hidden');
+                else if (data.total_count === 0) cartCount.classList.add('hidden');
             }
         })
         .catch(error => {

@@ -20,7 +20,7 @@ class Cart(object):
         """
         Counting all items in cart.
         """
-        return sum(item["quantity"] for item in self.cart.values())
+        return len(self.cart)
 
     @property
     def total_price(self):

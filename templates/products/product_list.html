@@ -32,7 +32,7 @@
     </nav>
     <div class="flex flex-wrap grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {% for product in products %}
-            <a href="{% url 'product_detail' product.id %}">
+            <a href="{% url 'product_detail' product.id %}" class="relative">
                 <div class="h-60 sm:h-80 flex flex-col border border-gray-300 rounded-xl bg-white shadow-sm">
                     <div class="h-3/5">
                         <img class="w-full h-full object-cover rounded-t-xl" src="{{ product.image.url }}" alt="Product Image">
@@ -44,16 +44,10 @@
                         <div>
                             <p class="text-sm text-[#06a941]">{{ product.count }} dona mavjud</p>
                         </div>
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <p class="text-sm font-semibold" data-value-type="price">{{ product.price }} UZS</p>
-                            </div>
-                            <div>
-                                <button class="w-8 h-8 flex justify-center items-center">
-                                    <img class="p-1 border border-gray-400 rounded-lg" src="{% static 'assets/icons/add.svg' %}" alt="Add">
-                                </button>
-                            </div>
-                        </div>
+                        <p class="text-sm font-semibold" data-value-type="price">{{ product.price }} UZS</p>
+                        <button class="w-8 h-8 flex justify-center items-center absolute right-2 bottom-2">
+                            <img class="p-1 border border-gray-400 rounded-lg" src="{% static 'assets/icons/add.svg' %}" alt="Add">
+                        </button>
                     </div>
                 </div>
             </a>
