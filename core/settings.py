@@ -27,7 +27,9 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    "rest_framework",
+]
 
 CUSTOM_APPS = [
     "apps.bot",
@@ -125,3 +127,10 @@ CSRF_TRUSTED_ORIGINS = ["https://www.al-asal.uz"]
 CSRF_COOKIE_SECURE = True
 
 TELEGRAM_BOT_TOKEN = env.str("TELEGRAM_BOT_TOKEN")
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "core.authentication.CustomJWTAuthentication",
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    )
+}

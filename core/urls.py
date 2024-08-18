@@ -16,7 +16,9 @@ urlpatterns = [
     # path("user/", include("apps.user.urls")),
     path("tailwind/", tailwind_sample, name="tailwind_sample"),
     path("products/", include("apps.products.urls")),
+    path("bot/", include("apps.bot.urls")),
 ]
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
