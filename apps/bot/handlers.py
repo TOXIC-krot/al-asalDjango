@@ -49,7 +49,7 @@ async def contact_handler(message: Message, tg_user: TelegramUser):
                 InlineKeyboardButton(
                     text="BIZNING MAHSULOTLAR",
                     web_app=WebAppInfo(
-                        url="https://www.al-asal.uz/products/{tg_user.token}/"
+                        url=f"https://www.al-asal.uz/products/{tg_user.token}/"
                     ),
                 )
             ]
