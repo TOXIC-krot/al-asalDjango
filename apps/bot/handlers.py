@@ -6,6 +6,9 @@ from apps.bot.keyboards import contact_keyboard, location_keyboard
 from apps.bot.models import TelegramUser
 
 
+from asgiref.sync import sync_to_async
+
+
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 
 
@@ -38,7 +41,7 @@ async def contact_handler(message: Message, tg_user: TelegramUser):
 
     token = secrets.token_urlsafe(16)
     tg_user.token = token
-    tg_user.save()
+    await sync_to_async(tg_user.save)()
 
     webapp_keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
