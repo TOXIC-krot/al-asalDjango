@@ -1,6 +1,7 @@
 import json
 from django.http import JsonResponse
-from django.views import View
+from django.views import View, generic
+from django.shortcuts import render
 from apps.products.models import Product
 from apps.cart.cart import Cart
 
@@ -31,6 +32,12 @@ class CartUpdateView(View):
             'quantity': cart.cart.get(str(product_id), {}).get('quantity', 0),
             'total_count': cart.total_count,
         })
+
+# need to be class-based
+def cart_detail(request):
+    cart = Cart(request)
+    return render(request, 'cart/cart.html', {'cart': cart})
+
 
 '''
 import json
