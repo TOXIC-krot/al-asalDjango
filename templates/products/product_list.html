@@ -12,6 +12,15 @@
           <img class="p-2 border border-gray-400 rounded-xl" src="{% static 'assets/icons/filters.svg' %}" alt="Filters">
         </button>
     </div> -->
+
+
+    <div class="p-4 bg-green-500 text-white">
+        <div>{{ telegram_user.telegram_id }}</div>
+        <div>{{ telegram_user.username }}</div>
+        <div>{{ telegram_user.first_name }}</div>
+        <div>{{ telegram_user.last_name }}</div>
+    </div>
+
     <nav class="w-full flex flex-col justify-between items-center">
         <!-- <h1 class="text-lg font-semibold mb-3 w-full text-gray-800">Asal turlari:</h1> -->
         <div class="w-full mb-3">

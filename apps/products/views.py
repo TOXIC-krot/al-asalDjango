@@ -10,12 +10,22 @@ class ProductListView(generic.ListView):
     def get_queryset(self):
         category_id = self.kwargs.get("category_id")
         if category_id:
-            return models.Product.objects.filter(category_id=category_id, is_available=True)
+            return models.Product.objects.filter(
+                category_id=category_id, is_available=True
+            )
         return models.Product.objects.filter(is_available=True)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["categories"] = models.Category.objects.all()
+
+        telegram_user_token = self.kwargs.get("telegram_user_token")
+
+        if telegram_user_token:
+            context["telegram_user"] = models.TelegramUser.objects.get(
+                token=telegram_user_token
+            )
+
         return context
 
 

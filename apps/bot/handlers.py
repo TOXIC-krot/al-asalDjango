@@ -2,8 +2,14 @@ from aiogram import F, Router
 from aiogram.filters import Command
 from aiogram.types import Message, ReplyKeyboardRemove
 
-from apps.bot.keyboards import contact_keyboard, location_keyboard, webapp_keyboard
+from apps.bot.keyboards import contact_keyboard, location_keyboard
 from apps.bot.models import TelegramUser
+
+
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
+
+
+import secrets
 
 
 router = Router()
@@ -23,11 +29,28 @@ async def start_handler(message: Message):
 
 
 @router.message(F.contact)
-async def contact_handler(message: Message):
+async def contact_handler(message: Message, tg_user: TelegramUser):
     # Remove the contact keyboard
     await message.answer(
         "Tabriklaymiz! Tizimdan muvaffaqiyatli ro'yxatdan o'tdingiz.",
         reply_markup=ReplyKeyboardRemove(),  # Remove the contact keyboard
+    )
+
+    token = secrets.token_urlsafe(16)
+    tg_user.token = token
+    tg_user.save()
+
+    webapp_keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text="BIZNING MAHSULOTLAR",
+                    web_app=WebAppInfo(
+                        url="https://www.al-asal.uz/products/{tg_user.token}/"
+                    ),
+                )
+            ]
+        ]
     )
 
     # Send a new message with the new webapp keyboard
