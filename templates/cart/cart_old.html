@@ -1,0 +1,62 @@
+{% extends '_base.html' %}
+
+{% load static %}
+
+{% block content %}
+  <div class="flex flex-col">
+    <div class="fixed top-0 w-full bg-[linear-gradient(45deg,_#ffae00,_#f29010)] text-white">
+        <div class="px-4 py-4"> <!-- px-4 was instead of container -->
+            <div class="flex justify-between mb-2">
+                <h3 class="text-lg font-normal">Savatingiz</h3>
+                <h2 class="text-xl" data-value-type="price">{{ cart.get_total_price }} UZS</h2>
+            </div>
+            <div class="flex justify-between items-center">
+                <h6 id="datetime" class="text-xs font-normal"></h6>
+                <a class="bg-white text-amber-500 py-0.5 px-2 inline-flex items-center text-xs" href="{% url "product_list" %}"> <!-- maybe text-sm -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/></svg>
+                    <!-- <img src="{% static 'assets/icons/plus.svg' %}"> -->
+                    &nbsp;O'zgartirish
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4">
+        <div class="px-4"> <!-- px-4 was instead of container -->
+            <table class="table-products w-full">
+                <tr class="text-[#b7b7b7] border-b border-[#d9d9d9]">
+                  <th class="w-[63%] p-1">Mahsulot</th>
+                  <th class="w-[17%] p-1">Son</th>
+                  <th class="p-1 text-right">Narx</th> <!-- w-fit -->
+                </tr>
+                {% for item in cart %}
+                    {% with product=item.product %}
+                        <tr class="my-fs-3"> <!-- CHECKOUT -->
+                            <td class="py-2.5 px-1">
+                                <div class="flex">
+                                    <img class="mr-4 w-20" src="{{ product.image.url }}" /> <!-- h-20 -->
+                                    <div>
+                                        <p>{{ product.name }} <span class="text-sm" style="color: #9a9b9c;">{{ product.weight }}&#8239;g</span></p>
+                                        <span class="text-sm" data-value-type="price">{{ item.price }} UZS</span>
+                                        <br />
+                                        <a class="text-amber-500 text-sm" href="#">O'chirish</a> <!-- {% url "cart_remove" product.id %} -->
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-2.5 px-1">{{ item.quantity }} ta</td>
+                            <td class="py-2.5 px-1 text-right" data-value-type="price">{{ item.total_price }} UZS</td>
+                        </tr>
+                    {% endwith %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var now = new Date();
+        var dateTimeString = now.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) + ', ' + now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        document.getElementById('datetime').innerText = dateTimeString;
+    });
+  </script>
+{% endblock content %}

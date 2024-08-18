@@ -7,10 +7,11 @@
 
 <div class="p-4">
 
-    <div class="mb-4">
+    <!-- <div class="mb-4">
         <button>
           <img class="p-2 border border-gray-400 rounded-xl" src="{% static 'assets/icons/filters.svg' %}" alt="Filters">
         </button>
+<<<<<<< Updated upstream
     </div>
     <nav class="w-full flex flex-col justify-between items-center">
         <!-- <h1 class="text-lg font-semibold mb-3 w-full text-gray-800">Asal turlari:</h1> -->
@@ -24,6 +25,19 @@
                     {% for category in categories %}
                     <li class="border-b border-gray-300 pb-2">
                         <a href="{% url 'product_list_by_category' category.id %}" class="block p-3 bg-gray-50 text-gray-800 rounded-lg hover:bg-gray-100 transition-colors duration-300 text-left">{{ category.title }}</a>
+=======
+    </div> -->
+    <nav class="mb-5">
+        <div class="w-full flex flex-col sm:flex-row justify-between items-center">
+            <h1 class="text-lg font-semibold mb-3 w-full sm:w-full sm:mb-0">Asal turlari:</h1>
+            <ul class="w-full sm:w-1/2 owl-carousel owl-theme flex gap-4 mt-3 sm:mt-0 overflow-auto">
+                <li class="text-center border-b-2 border-gray-300 pb-2">
+                    <a href="{% url 'product_list' %}" class="block p-2 rounded hover:bg-gray-200 transition-colors duration-300 text-black sm:text-sm">Barchasi</a>
+                </li>
+                {% for category in categories %}
+                    <li class="text-center border-b-2 border-gray-300 pb-2">
+                        <a href="{% url 'product_list_by_category' category.id %}" class="block p-2 rounded hover:bg-gray-200 transition-colors duration-300 text-black sm:text-sm">{{ category.title }}</a>
+>>>>>>> Stashed changes
                     </li> <!-- birlashtirmaganmidik product_list va product_list_by_category larni -->
                     {% endfor %}
                 </ul>
