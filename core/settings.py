@@ -62,7 +62,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                'apps.cart.context_processors.cart',
+                "apps.cart.context_processors.cart",
             ],
         },
     },
@@ -123,3 +123,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CSRF_TRUSTED_ORIGINS = ["https://www.al-asal.uz"]
 CSRF_COOKIE_SECURE = True
+
+TELEGRAM_BOT_TOKEN = env.str("TELEGRAM_BOT_TOKEN")

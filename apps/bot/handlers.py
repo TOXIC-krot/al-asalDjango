@@ -3,6 +3,7 @@ from aiogram.filters import Command
 from aiogram.types import Message, ReplyKeyboardRemove
 
 from apps.bot.keyboards import contact_keyboard, location_keyboard, webapp_keyboard
+from apps.bot.models import TelegramUser
 
 
 router = Router()
@@ -12,7 +13,7 @@ router = Router()
 async def start_handler(message: Message):
     photo_url = "https://heartfelt-cascaron-a8b855.netlify.app/assets/logo.jpg"
     caption_text = (
-        "Assalomu alaykum! \"Al-asal\" sahifamizga xush kelibsiz, "
+        'Assalomu alaykum! "Al-asal" sahifamizga xush kelibsiz, '
         "tizimni ishga tushirish uchun keling avval tanishib olaylik, "
         "o'z kontaktingizni jo'nating."
     )
@@ -26,13 +27,12 @@ async def contact_handler(message: Message):
     # Remove the contact keyboard
     await message.answer(
         "Tabriklaymiz! Tizimdan muvaffaqiyatli ro'yxatdan o'tdingiz.",
-        reply_markup=ReplyKeyboardRemove()  # Remove the contact keyboard
+        reply_markup=ReplyKeyboardRemove(),  # Remove the contact keyboard
     )
-    
+
     # Send a new message with the new webapp keyboard
     await message.answer(
-        "Mahsulotlarni ko'rish uchun tugmani bosing!",
-        reply_markup=webapp_keyboard
+        "Mahsulotlarni ko'rish uchun tugmani bosing!", reply_markup=webapp_keyboard
     )
 
 
