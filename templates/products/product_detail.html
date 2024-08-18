@@ -13,10 +13,10 @@
         <a href="{% url 'product_list' %}" class="border rounded-full p-2 shadow shadow-slate-400 bg-white">
           <img class="w-6" src="{% static 'assets/icons/x.svg' %}" alt="X">
         </a>
-        <button class="border rounded-full p-2 shadow shadow-slate-400 bg-white relative">
+        <a href="{% url 'cart_detail' %}" class="border rounded-full p-2 shadow shadow-slate-400 bg-white relative">
           <img class="w-6 -translate-x-0.5 translate-y-0.5" src="{% static 'assets/icons/cart.svg' %}" alt="Cart">
-          <span id="cart-total-count" class="absolute top-1.5 right-1.5 h-3.5 w-[18px] border rounded-full bg-violet-700 text-white text-[9px] {% if cart.total_count == 0 %} hidden {% endif %}">{{ cart.total_count }}</span>
-        </button>
+          <span id="cart-total-count" class="text-center absolute top-1.5 right-1.5 h-3.5 w-[18px] border rounded-full bg-violet-700 text-white text-[9px] {% if cart.total_count == 0 %} hidden {% endif %}">{{ cart.total_count }}</span>
+        </a>
       </div>
     </div> 
     <div class="p-4">
