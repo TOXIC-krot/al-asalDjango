@@ -1,5 +1,6 @@
 from django.views import generic
 from apps.products import models
+from apps.bot.models import TelegramUser
 
 
 class ProductListView(generic.ListView):
@@ -22,7 +23,7 @@ class ProductListView(generic.ListView):
         telegram_user_token = self.kwargs.get("telegram_user_token")
 
         if telegram_user_token:
-            context["telegram_user"] = models.TelegramUser.objects.get(
+            context["telegram_user"] = TelegramUser.objects.get(
                 token=telegram_user_token
             )
 
