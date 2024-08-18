@@ -5,41 +5,57 @@ from django.shortcuts import render
 from apps.products.models import Product
 from apps.cart.cart import Cart
 
+
 class CartUpdateView(View):
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body)
-        product_id = data.get('product_id')
-        action = data.get('action')
+        product_id = data.get("product_id")
+        action = data.get("action")
 
         cart = Cart(request)
 
         try:
             product = Product.objects.get(id=product_id)
         except Product.DoesNotExist:
-            return JsonResponse({'error': 'Product does not exist.'}, status=404)
+            return JsonResponse({"error": "Product does not exist."}, status=404)
 
-        if action == 'increment':
-            cart.add(product, quantity=1)     
-        elif action == 'decrement':
+        if action == "increment":
+            cart.add(product, quantity=1)
+        elif action == "decrement":
             cart.add(product, quantity=-1)
-        elif action == 'delete':
+        elif action == "delete":
             cart.remove(product)
-        elif action == 'clear':
+        elif action == "clear":
             cart.clear()
 
-        return JsonResponse({
-            'success': True,
-            'quantity': cart.cart.get(str(product_id), {}).get('quantity', 0),
-            'total_count': cart.total_count,
-        })
+        return JsonResponse(
+            {
+                "success": True,
+                "quantity": cart.cart.get(str(product_id), {}).get("quantity", 0),
+                "total_count": cart.total_count,
+            }
+        )
+
+
+class CartDetailView(generic.TemplateView):
+    template_name = "cart/cart.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        cart = Cart(self.request)
+        context["cart"] = cart
+
+        return context
+
 
 # need to be class-based
-def cart_detail(request):
-    cart = Cart(request)
-    return render(request, 'cart/cart.html', {'cart': cart})
+# def cart_detail(request):
+#     cart = Cart(request)
+#     return render(request, "cart/cart.html", {"cart": cart})
 
 
-'''
+"""
 import json
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -87,7 +103,7 @@ def cart_detail(request, pk):
     elif request.method == 'DELETE':
         cart.delete()
         return JsonResponse({'status': 'deleted'})
-'''
+"""
 
 # from django.shortcuts import render, redirect, get_object_or_404
 # from django.http import JsonResponse
