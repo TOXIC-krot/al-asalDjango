@@ -25,12 +25,12 @@
         <div class="w-full mb-3">
             <details class="w-full">
                 <summary class="text-lg font-semibold text-gray-700 bg-gray-200 px-4 py-2 rounded-md shadow-sm">Asal turlari:</summary>
-                <ul class="w-full flex flex-col gap-4 mt-3 overflow-auto">
-                    <li class="border-b border-gray-300 pb-2">
+                <ul class="w-full flex flex-col">
+                    <li class="border-b border-gray-300">
                         <a href="{% url 'product_list' %}" class="block p-3 bg-gray-50 text-gray-800 rounded-lg hover:bg-gray-100 transition-colors duration-300 text-left">Barchasi</a>
                     </li>
                     {% for category in categories %}
-                    <li class="border-b border-gray-300 pb-2">
+                    <li class="border-b border-gray-300">
                         <a href="{% url 'product_list_by_category' category.id %}" class="block p-3 bg-gray-50 text-gray-800 rounded-lg hover:bg-gray-100 transition-colors duration-300 text-left">{{ category.title }}</a>
                     </li> <!-- birlashtirmaganmidik product_list va product_list_by_category larni -->
                     {% endfor %}
