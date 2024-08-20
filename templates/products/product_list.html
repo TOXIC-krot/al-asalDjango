@@ -22,7 +22,6 @@
     </div>
 
     <nav class="w-full flex flex-col justify-between items-center">
-        <!-- <h1 class="text-lg font-semibold mb-3 w-full text-gray-800">Asal turlari:</h1> -->
         <div class="w-full mb-3">
             <details class="w-full">
                 <summary class="text-lg font-semibold text-gray-700 bg-gray-200 px-4 py-2 rounded-md shadow-sm">Asal turlari:</summary>
@@ -41,12 +40,12 @@
     </nav>
     <div class="flex flex-wrap grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {% for product in products %}
-            <a href="{% url 'product_detail' product.id %}" class="relative">
-                <div class="h-60 sm:h-80 flex flex-col border border-gray-300 rounded-xl bg-white shadow-sm">
+            <div class="relative product-card">
+                <a href="{% url 'product_detail' product.id %}" class="h-60 sm:h-80 flex flex-col border border-gray-300 rounded-xl bg-white shadow-sm">
                     <div class="h-3/5">
                         <img class="w-full h-full object-cover rounded-t-xl" src="{{ product.image.url }}" alt="Product Image">
                     </div>
-                    <div class="h-2/5 p-2 flex flex-col justify-between">
+                    <div class="min-h-[40%] p-2 flex flex-col justify-between bg-white bg-opacity-80 absolute bottom-0 w-full">
                         <div class="overflow-hidden">
                             <p class="text-sm truncate">{{ product.title }}</p>
                         </div>
@@ -54,15 +53,28 @@
                             <p class="text-sm text-[#06a941]">{{ product.count }} dona mavjud</p>
                         </div>
                         <p class="text-sm font-semibold" data-value-type="price">{{ product.price }} UZS</p>
-                        <button class="w-8 h-8 flex justify-center items-center absolute right-2 bottom-2">
-                            <img class="p-1 border border-gray-400 rounded-lg" src="{% static 'assets/icons/add.svg' %}" alt="Add">
-                        </button>
+                        <div class="flex items-center justify-between border rounded-3xl px-2 py-px hidden" id="quantity-selector">
+                            <button class="update-cart" data-product-id="{{ product.id }}" data-action="decrement">
+                              <img class="px-1" src="{% static 'assets/icons/minus.svg' %}" alt="Minus">
+                            </button>
+                            <span class="text-center font-medium mx-2" id="selected-quantity">
+                              {{ item.quantity|default:0 }} dona
+                            </span>
+                            <!-- if it is "optom", then show "kg" instead of "dona" -->
+                            <button class="update-cart" data-product-id="{{ product.id }}" data-action="increment">
+                              <img class="px-1" src="{% static 'assets/icons/plus.svg' %}" alt="Plus">
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+                <button class="w-8 h-8 flex justify-center items-center absolute right-2 bottom-2" id="add-product">
+                    <img class="p-1 border border-gray-400 rounded-lg" src="{% static 'assets/icons/add.svg' %}" alt="Add">
+                </button>
+            </div>
         {% endfor %}
     </div>
-
 </div>
+
+<script src="{% static 'assets/js/product_list.js' %}"></script>
 
 {% endblock content %}
