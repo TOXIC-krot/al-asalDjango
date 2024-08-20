@@ -6,7 +6,7 @@ from apps.products.models import Product
 from apps.cart.cart import Cart
 
 
-class CartUpdateView(View):
+class CartUpdateView(View): # Shouldn't they be generic.TemplateView
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body)
         product_id = data.get("product_id")
@@ -25,8 +25,6 @@ class CartUpdateView(View):
             cart.add(product, quantity=-1)
         elif action == "delete":
             cart.remove(product)
-        elif action == "clear":
-            cart.clear()
 
         return JsonResponse(
             {
@@ -35,6 +33,14 @@ class CartUpdateView(View):
                 "total_count": cart.total_count,
             }
         )
+    
+class CartClearView(View): # Shouldn't they be generic.TemplateView
+    def post(self, request, *args, **kwargs):
+        cart = Cart(request)
+        cart.clear()
+
+        return JsonResponse({ "success": True, })
+
 
 
 class CartDetailView(generic.TemplateView):
