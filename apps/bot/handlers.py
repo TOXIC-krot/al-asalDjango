@@ -1,3 +1,5 @@
+import secrets
+
 from aiogram import F, Router
 from aiogram.filters import Command
 from aiogram.types import Message, ReplyKeyboardRemove
@@ -5,14 +7,8 @@ from aiogram.types import Message, ReplyKeyboardRemove
 from apps.bot.keyboards import contact_keyboard, location_keyboard
 from apps.bot.models import TelegramUser
 
-
 from asgiref.sync import sync_to_async
-
-
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
-
-
-import secrets
 
 
 router = Router()
@@ -49,7 +45,8 @@ async def contact_handler(message: Message, tg_user: TelegramUser):
                 InlineKeyboardButton(
                     text="BIZNING MAHSULOTLAR",
                     web_app=WebAppInfo(
-                        url=f"https://www.al-asal.uz/products/{tg_user.token}/"
+                        # url=f"https://www.al-asal.uz/products/{tg_user.token}/"
+                        url=f"https://www.al-asal.uz/",
                     ),
                 )
             ]
