@@ -34,7 +34,7 @@ class ProductDetailSerializer(ModelSerializer):
             "description",
             "image",
             "weight",
-            "vide_url",
+            "video_url",
             "price",
             "count",
         )
