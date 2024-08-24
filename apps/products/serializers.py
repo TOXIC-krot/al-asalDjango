@@ -8,7 +8,6 @@ class ProductListSerializer(ModelSerializer):
         fields = (
             "id",
             "title",
-            "description",
             "image",
             "price",
             "weight",
