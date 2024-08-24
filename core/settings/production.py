@@ -27,7 +27,7 @@ LOGGER_CHAT_ID = env.str("LOGGER_CHAT_ID")
 
 CORS_ALLOWED_ORIGINS = [
     "https://www.al-asal.uz",
-    "https://al-asal-frontend.vercel.app/",
+    "https://al-asal-frontend.vercel.app",
 ]
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
