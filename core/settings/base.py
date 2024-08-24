@@ -22,6 +22,9 @@ DJANGO_APPS = [
 
 CUSTOM_APPS = [
     "apps.common",
+    "apps.bot",
+    "apps.products",
+    "apps.cart",
     "apps.users",
 ]
 
@@ -109,42 +112,29 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "users.User"
 
-JAZZMIN_SETTINGS = {
-    # Site
-    "site_title": "BRB Titans",
-    "site_header": "BRB Titans",
-    "site_brand": "BRB Titans",
-    "site_logo": "brb-titans-logo.png",
-    # Welcome
-    "welcome_sign": "Welcome to BRB Titans admin panel!",
-    "welcome_panel_logo": "brb-titans-logo.png",
-    # Login
-    "login_logo": "brb-titans-logo.png",
-}
-
-
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
+        "core.authentication.CustomJWTAuthentication",
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
 }
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(hours=1),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
-    "ROTATE_REFRESH_TOKENS": True,
-    "BLACKLIST_AFTER_ROTATION": True,
-    "ALGORITHM": "HS256",
-    "SIGNING_KEY": SECRET_KEY,
-    "AUTH_HEADER_TYPES": ("Bearer",),
-    "USER_ID_FIELD": "id",
-    "USER_ID_CLAIM": "user_id",
-    "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
-    "TOKEN_TYPE_CLAIM": "token_type",
-    "JTI_CLAIM": "jti",
-    "SLIDING_TOKEN_LIFETIME": timedelta(minutes=5),
-    "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
+    # "ACCESS_TOKEN_LIFETIME": timedelta(hours=1),
+    # "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    # "ROTATE_REFRESH_TOKENS": True,
+    # "BLACKLIST_AFTER_ROTATION": True,
+    # "ALGORITHM": "HS256",
+    # "SIGNING_KEY": SECRET_KEY,
+    # "AUTH_HEADER_TYPES": ("Bearer",),
+    # "USER_ID_FIELD": "id",
+    # "USER_ID_CLAIM": "user_id",
+    # "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
+    # "TOKEN_TYPE_CLAIM": "token_type",
+    # "JTI_CLAIM": "jti",
+    # "SLIDING_TOKEN_LIFETIME": timedelta(minutes=5),
+    # "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
 }
 
 # EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
