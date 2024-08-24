@@ -42,6 +42,8 @@
 # )
 
 from rest_framework.generics import ListAPIView
+from rest_framework.permissions import AllowAny
+
 from apps.products.serializers import ProductListSerializer
 from apps.products.models import Product
 
@@ -49,3 +51,4 @@ from apps.products.models import Product
 class ProductListView(ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductListSerializer
+    permission_classes = (AllowAny,)
