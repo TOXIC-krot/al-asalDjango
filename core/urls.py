@@ -28,10 +28,10 @@ urlpatterns = [
 
 # custom urls
 urlpatterns += [
-    path("api/v1/users/", include("apps.users.urls")),
-    path("api/v1/cart/", include("apps.cart.urls")),
-    path("api/v1/products/", include("apps.products.urls")),
-    path("api/v1/bot/", include("apps.bot.urls")),
+    path("api/users/", include("apps.users.urls")),
+    path("api/cart/", include("apps.cart.urls")),
+    path("api/products/", include("apps.products.urls")),
+    path("api/bot/", include("apps.bot.urls")),
 ]
 
 # swagger urls
