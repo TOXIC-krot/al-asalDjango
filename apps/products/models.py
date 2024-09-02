@@ -25,7 +25,10 @@ class Product(BaseModel):
 
     image = models.ImageField(upload_to="products/")
     weight = models.DecimalField(max_digits=10, decimal_places=1)
-    video_url = models.URLField(max_length=500, default="https://www.youtube.com/embed/dC44dqf-6Cg?si=JlsdXurZXaLQeJkl")
+    video_url = models.URLField(
+        max_length=500,
+        default="https://www.youtube.com/embed/dC44dqf-6Cg?si=JlsdXurZXaLQeJkl",
+    )
     price = models.PositiveIntegerField(default=0)
     count = models.PositiveIntegerField(default=0)
 
