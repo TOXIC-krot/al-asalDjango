@@ -1,12 +1,12 @@
 from rest_framework import generics
 
-from apps.cart.models import (
+from apps.carts.models import (
     Cart,
     CartItem,
     Order,
     OrderItem,
 )
-from apps.cart.serializers import (
+from apps.carts.serializers import (
     CartItemSerializer,
     CartSerializer,
     OrderItemSerializer,

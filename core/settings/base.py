@@ -21,10 +21,12 @@ DJANGO_APPS = [
 ]
 
 CUSTOM_APPS = [
-    "apps.common",
     "apps.bot",
+    "apps.carts",
+    "apps.common",
+    "apps.favorites",
+    "apps.orders",
     "apps.products",
-    "apps.cart",
     "apps.users",
 ]
 
