@@ -11,9 +11,9 @@ from rest_framework import permissions
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="BRB Titans API",
+        title="Al Asal API",
         default_version="v1",
-        description="brb-titans backend api",
+        description="al-asal backend api",
         terms_of_service="https://www.google.com/policies/terms/",
         license=openapi.License(name="BSD License"),
     ),
@@ -29,7 +29,7 @@ urlpatterns = [
 # custom urls
 urlpatterns += [
     path("api/users/", include("apps.users.urls")),
-    path("api/cart/", include("apps.cart.urls")),
+    # path("api/cart/", include("apps.cart.urls")),
     path("api/products/", include("apps.products.urls")),
     path("api/bot/", include("apps.bot.urls")),
 ]
