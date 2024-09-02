@@ -1,16 +1,5 @@
 from django.contrib import admin
-from apps.carts.models import (
-    Cart,
-    CartItem,
-    Order,
-    OrderItem,
-    Saved,
-    SavedItem,
-)
+from apps.carts.models import Cart, CartItem
 
 admin.site.register(Cart)
 admin.site.register(CartItem)
-admin.site.register(Order)
-admin.site.register(OrderItem)
-admin.site.register(Saved)
-admin.site.register(SavedItem)
