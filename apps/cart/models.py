@@ -5,15 +5,6 @@ from apps.products.models import Product
 from apps.users.models import User
 
 
-"""
-OrderStatusChoices
-Order
-OrderItem
-Cart
-CartItem
-"""
-
-
 class OrderStatusChoices(models.TextChoices):
     PENDING = "PENDING", "Pending"
     CONFIRMED = "CONFIRMED", "Confirmed"
@@ -47,7 +38,18 @@ class CartItem(BaseModel):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+
     count = models.PositiveIntegerField(default=1)
+
+
+class Saved(BaseModel):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+class SavedItem(BaseModel):
+    saved = models.ForeignKey(Saved, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
 
 __all__ = (
@@ -55,4 +57,6 @@ __all__ = (
     "OrderItem",
     "Cart",
     "CartItem",
+    "Saved",
+    "SavedItem",
 )
