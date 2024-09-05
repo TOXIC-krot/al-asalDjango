@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
+from django.core.exceptions import ValidationError
 from apps.common.models import BaseModel
 from apps.users.managers import UserManager
 
@@ -14,8 +14,19 @@ class User(AbstractUser, BaseModel):
     email = None
 
     phone_number = models.CharField(
-        max_length=32, validators=phone_number_validators, unique=True
+        max_length=20,
+        validators=phone_number_validators,
+        unique=True
     )
+
+    def clean(self):
+        phone_number = self.phone_number.replace(" ", "")
+        if User.objects.filter(phone_number=phone_number).exists():
+            raise ValidationError("Такой номер уже существует.")
+
+    def save(self, *args, **kwargs):
+        self.phone_number = self.phone_number.replace(" ", "")
+        super().save(*args, **kwargs)
 
     REQUIRED_FIELDS = []
     USERNAME_FIELD = "phone_number"
