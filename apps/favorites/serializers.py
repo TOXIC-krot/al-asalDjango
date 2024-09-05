@@ -1,10 +1,10 @@
 from rest_framework.serializers import ModelSerializer
-from apps.favourites.models import Favourites
+from apps.favorites.models import Favorite
 
 
 class FavouritesSerializer(ModelSerializer):
     class Meta:
-        model = Favourites
+        model = Favorite
         fields = (
             "id",
             "category",

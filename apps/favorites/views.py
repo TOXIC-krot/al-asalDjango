@@ -1,12 +1,12 @@
 from rest_framework.generics import ListAPIView
 
-from apps.favourites.serializers import (
+from apps.favorites.serializers import (
     FavouritesSerializer
 )
-from apps.favourites.models import Favourites
+from apps.favorites.models import Favorite
 
 class FavouritesView(ListAPIView):
-    queryset = Favourites.objects.all()
+    queryset = Favorite.objects.all()
     serializer_class = FavouritesSerializer
 
     def get_queryset(self):
