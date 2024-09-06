@@ -1,13 +1,13 @@
 from rest_framework.generics import ListAPIView
+from rest_framework.permissions import IsAuthenticated
 
-from apps.favorites.serializers import (
-    FavouritesSerializer
-)
+from apps.favorites.serializers import FavoriteSerializer
 from apps.favorites.models import Favorite
 
-class FavouritesView(ListAPIView):
-    queryset = Favorite.objects.all()
-    serializer_class = FavouritesSerializer
+    
+class FavoriteListView(ListAPIView):
+    serializer_class = FavoriteSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return self.queryset.filter(user=self.request.user)
+        return Favorite.objects.filter(user=self.request.user)

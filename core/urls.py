@@ -32,6 +32,7 @@ urlpatterns += [
     # path("api/cart/", include("apps.cart.urls")),
     path("api/products/", include("apps.products.urls")),
     path("api/bot/", include("apps.bot.urls")),
+    path("api/favorites/", include("apps.favorites.urls"))
 ]
 
 # swagger urls
