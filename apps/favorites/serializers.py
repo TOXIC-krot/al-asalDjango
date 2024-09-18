@@ -4,7 +4,7 @@ from apps.products.serializers import ProductListSerializer
 
 
 class FavoriteItemSerializer(ModelSerializer):
-    product = ProductListSerializer(read_only=True)
+    product = ProductListSerializer()
 
     class Meta:
         model = FavoriteItem
