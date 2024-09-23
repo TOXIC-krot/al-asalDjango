@@ -10,6 +10,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = env.str("DJANGO_SECRET_KEY")
 
+JAZZMIN_SETTINGS = {
+    "icons": {
+        "favorites.saved": "fas fa-heart",            
+        "orders.order": "fas fa-shopping-cart",      
+        "products.category": "fas fa-tags",          
+        "products.product": "fas fa-box-open",      
+        "auth.group": "fas fa-user-shield", 
+        "bot.telegramuser": "fas fa-user",  
+        "carts.cartitem": "fas fa-shopping-cart", 
+        "carts.cart": "fas fa-shopping-basket",
+        "favorites.favorite": "fas fa-heart",
+        "favorites.favoriteitem": "fas fa-heart", 
+        "orders.orderitem": "fas fa-box", 
+        "users.user": "fas fa-user",
+    },
+}
+
 DJANGO_APPS = [
     "jazzmin",
     "django.contrib.admin",
