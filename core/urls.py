@@ -26,6 +26,11 @@ urlpatterns = [
     path("rosetta/", include("rosetta.urls")),
 ]
 
+# order
+urlpatterns = [
+    path("orders/", include("apps.orders.urls")),
+]
+
 # custom urls
 urlpatterns += [
     path("api/users/", include("apps.users.urls")),
