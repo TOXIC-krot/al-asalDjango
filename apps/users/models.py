@@ -7,16 +7,24 @@ from apps.users.managers import UserManager
 from core.validators import phone_number_validators
 
 
+class UserRoleChoices(models.TextChoices):
+    ADMIN = "admin", "Admin"
+    WAREHOUSE = "warehouse", "Warehouse"
+    DELIVERY = "delivery", "Delivery"
+
+
 class User(AbstractUser, BaseModel):
     username = None
     first_name = None
     last_name = None
     email = None
 
+    role = models.CharField(
+        max_length=20, choices=UserRoleChoices.choices, default=UserRoleChoices.ADMIN
+    )
+
     phone_number = models.CharField(
-        max_length=20,
-        validators=phone_number_validators,
-        unique=True
+        max_length=20, validators=phone_number_validators, unique=True
     )
 
     def clean(self):
