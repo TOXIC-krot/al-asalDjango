@@ -29,15 +29,19 @@ async def start_handler(message: Message):
 
 @router.message(F.contact)
 async def contact_handler(message: Message, tg_user: TelegramUser):
-    # Remove the contact keyboard
     await message.answer(
         "Tabriklaymiz! Tizimdan muvaffaqiyatli ro'yxatdan o'tdingiz.",
-        reply_markup=ReplyKeyboardRemove(),  # Remove the contact keyboard
+        reply_markup=ReplyKeyboardRemove(),
     )
 
     token = secrets.token_urlsafe(16)
     tg_user.token = token
     await sync_to_async(tg_user.save)()
+
+    web_app_url = (
+        "https://al-asal-frontend-git-develop-shavkatjons-projects.vercel.app/"
+        + tg_user.token
+    )
 
     webapp_keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
@@ -45,15 +49,13 @@ async def contact_handler(message: Message, tg_user: TelegramUser):
                 InlineKeyboardButton(
                     text="BIZNING MAHSULOTLAR",
                     web_app=WebAppInfo(
-                        # url=f"https://www.al-asal.uz/products/{tg_user.token}/"
-                        url=f"https://www.al-asal.uz/",
+                        url=web_app_url,
                     ),
                 )
             ]
         ]
     )
 
-    # Send a new message with the new webapp keyboard
     await message.answer(
         "Mahsulotlarni ko'rish uchun tugmani bosing!", reply_markup=webapp_keyboard
     )
