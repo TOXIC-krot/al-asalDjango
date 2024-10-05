@@ -38,12 +38,6 @@ DJANGO_APPS = [
 ]
 
 CUSTOM_APPS = [
-    # temp
-    "apps.carts",
-    "apps.favorites",
-    "apps.orders",
-    "apps.products",
-    # new structure
     "apps.bot",
     "apps.common",
     "apps.ecommerce",
