@@ -22,12 +22,8 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
-    path("rosetta/", include("rosetta.urls")),
-]
-
-urlpatterns += [
     path("admin/", admin.site.urls),
-    path("api/users/", include("apps.users.urls")),
+    path("rosetta/", include("rosetta.urls")),
     path("api/ecommerce/", include("apps.ecommerce.urls")),
     path("api/bot/", include("apps.bot.urls")),
 ]
