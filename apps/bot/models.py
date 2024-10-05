@@ -4,7 +4,8 @@ from apps.common.models import BaseModel
 
 
 class TelegramUser(BaseModel):
-    telegram_id = models.PositiveIntegerField(unique=True)
+    # telegram_id = models.PositiveIntegerField(unique=True)
+    telegram_id = models.BigIntegerField(unique=True)
 
     username = models.CharField(max_length=256, blank=True, null=True)
     first_name = models.CharField(max_length=256, blank=True, null=True)
