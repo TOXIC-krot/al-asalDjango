@@ -24,7 +24,8 @@ webapp_keyboard = InlineKeyboardMarkup(
         [
             InlineKeyboardButton(
                 text="BIZNING MAHSULOTLAR",
-                web_app=WebAppInfo(url="https://www.al-asal.uz/products/"),
+                # web_app=WebAppInfo(url="https://www.al-asal.uz/products/"),
+                web_app=WebAppInfo(url="https://www.al-asal.uz/someRandomPage/"),
             )
         ]
     ]
