@@ -46,7 +46,8 @@ async def contact_handler(message: Message, tg_user: TelegramUser):
                     text="BIZNING MAHSULOTLAR",
                     web_app=WebAppInfo(
                         # url=f"https://www.al-asal.uz/products/{tg_user.token}/"
-                        url=f"https://www.al-asal.uz/",
+                        # url=f"https://www.al-asal.uz/",
+                        url=f"https://www.al-asal.uz/telegramAuthTest/",
                     ),
                 )
             ]
